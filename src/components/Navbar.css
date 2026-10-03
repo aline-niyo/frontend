@@ -1,0 +1,146 @@
+/* ==========================================
+   STYLES DE LA NAVBAR
+   ========================================== */
+
+/* Structure principale de la barre de navigation */
+.navbar {
+  width: 99%;
+  padding: 20px 40px;
+  background-color:transparent;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  box-sizing: border-box;
+}
+.navbar-container {
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* --- LOGO --- */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  background: rgba(10, 25, 50, 0.6); /* Capsule sombre néon */
+  border: 1px solid rgba(0, 150, 255, 0.4);
+  border-radius: 30px;
+  padding: 6px 18px 6px 8px;
+  backdrop-filter: blur(8px);
+  transition: border-color 0.3s ease;
+}
+
+.navbar-logo:hover {
+  border-color: rgba(0, 210, 255, 0.8);
+}
+
+.navbar-logo img {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+}
+
+.navbar-logo span {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+
+/* --- MENU DE NAVIGATION --- */
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  
+}
+
+/* Style de base de chaque lien */
+.navbar-link {
+  position: relative; /* NÉCESSAIRE pour positionner le pseudo-élément ::after */
+  color: #d1d5db;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding-bottom: 6px; /* Espace entre le texte et la ligne */
+  transition: color 0.3s ease;
+}
+
+/* Ligne blanche invisible par défaut (pseudo-élément ::after) */
+.navbar-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%; /* Invisible au départ */
+  height: 2px;
+  background-color: #ffffff; /* Ligne blanche sous le menu */
+  border-radius: 2px;
+  transition: width 0.3s ease; /* Animation fluide lors du survol/clic */
+}
+
+/* Survol de la souris (Hover) */
+.navbar-link:hover {
+  color: #ffffff;
+}
+
+.navbar-link:hover::after {
+  width: 100%; /* La ligne s'étire au survol */
+}
+
+/* Lien actif (quand la page correspondante est ouverte grâce à NavLink) */
+.navbar-link.active {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.navbar-link.active::after {
+  width: 100%; /* La ligne blanche reste affichée sous le menu sélectionné */
+}
+
+/* --- BOUTON ENCADRÉ "CONTACTEZ-NOUS" --- */
+.navbar-devis {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+  margin-left: 10px;
+}
+
+.navbar-devis:hover {
+  background: #ffffff;
+  color: #030b21;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+/* --- ADAPTATION ÉCRANS MOBILES & TABLETTES --- */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 20px;
+  }
+  
+  .navbar-menu {
+    gap: 15px;
+  }
+  
+  .navbar-link {
+    font-size: 0.85rem;
+  }
+  
+  .navbar-devis {
+    padding: 6px 14px;
+    font-size: 0.8rem;
+  }
+}

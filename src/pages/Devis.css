@@ -1,0 +1,286 @@
+
+/* ================================
+   PAGE DEMANDE DE DEVIS
+================================ */
+
+.devis-page {
+    min-height: calc(100vh - 80px);
+    background: #333434;
+    padding: 40px 20px;
+}
+
+
+/* ================================
+   CONTENEUR
+================================ */
+
+.devis-container {
+    width: 70%;
+    max-width: 900px;
+    margin: 0 auto;
+    margin-top: 50px;
+    background: #f8f9fa;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+/* ================================
+   TITRE
+================================ */
+
+.devis-container h1 {
+    margin: 0 0 10px;
+    text-align: center;
+    font-size: 36px;
+    font-weight: 500;
+    color: #0b0be8;
+}
+
+
+/* ================================
+   INTRODUCTION
+================================ */
+
+.devis-introduction {
+    max-width: 700px;
+    margin: 0 auto 25px;
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #383636;
+}
+
+
+/* ================================
+   FORMULAIRE
+================================ */
+
+.devis-container form {
+    width: 50%;
+    margin: 0 auto;
+}
+
+
+/* ================================
+   LIGNE DE FORMULAIRE
+================================ */
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5px;
+    margin-bottom: 0;
+}
+
+
+/* ================================
+   GROUPE
+================================ */
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+
+/* ================================
+   LABEL
+================================ */
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #374151;
+}
+
+
+/* ================================
+   INPUT / SELECT / TEXTAREA
+================================ */
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 15px;
+    color: #374151;
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+    outline: none;
+    transition: 0.3s ease;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+
+/* ================================
+   FOCUS
+================================ */
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+
+/* ================================
+   TEXTAREA
+================================ */
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+
+/* ================================
+   PETIT TEXTE
+================================ */
+
+.form-group small {
+    display: block;
+    margin-top: 4px;
+    font-size: 13px;
+    color: #6b7280;
+}
+
+
+/* ================================
+   BOUTON
+================================ */
+
+.submit-button {
+    display: block;
+    width: 58%;
+    padding: 12px 20px;
+    margin: 5px auto 0;
+    border: none;
+    border-radius: 10px;
+    background: #2563eb;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        transform 0.2s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* ================================
+   SURVOL BOUTON
+================================ */
+
+.submit-button:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 12px rgba(37, 99, 235, 0.25);
+}
+
+
+/* ================================
+   PLACEHOLDER
+================================ */
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #9ca3af;
+}
+
+
+/* ================================
+   MESSAGE DE SUCCÈS
+================================ */
+
+.success-message {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    padding: 12px 15px;
+    border-radius: 7px;
+    background: #dcfce7;
+    border: 1px solid #86efac;
+    color: #166534;
+    font-size: 14px;
+    text-align: center;
+}
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 700px) {
+
+    .devis-page {
+        padding: 30px 15px;
+    }
+
+    .devis-container {
+        width: 90%;
+        padding: 25px 20px;
+    }
+
+    .devis-container h1 {
+        font-size: 28px;
+    }
+
+    .devis-container form {
+        width: 80%;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .form-group {
+        margin-bottom: 10px;
+    }
+
+    .submit-button {
+        width: 70%;
+    }
+}
+
+
+/* ================================
+   PETITS ÉCRANS
+================================ */
+
+@media (max-width: 480px) {
+
+    .devis-page {
+        padding: 20px 10px;
+    }
+
+    .devis-container {
+        width: 100%;
+        padding: 25px 15px;
+    }
+
+    .devis-container h1 {
+        font-size: 25px;
+    }
+
+    .devis-introduction {
+        font-size: 14px;
+    }
+
+    .devis-container form {
+        width: 100%;
+    }
+
+    .submit-button {
+        width: 100%;
+    }
+}
