@@ -12,9 +12,34 @@ import logo6 from "../assets/logo2/im6.jpg";
 
 import droite from "../assets/back.webp";
 
+import logo from "../assets/logo.png"; 
+
+const defaultImages = {
+  "Développement web": "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=800&auto=format&fit=crop",
+  "Développement d applications": "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=800&auto=format&fit=crop",
+  "Maintenance informatique": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800&auto=format&fit=crop",
+  "Installation de logiciels": "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop",
+  "Réseaux informatiques": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop",
+  "Bases de données": "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?q=80&w=800&auto=format&fit=crop",
+  "Sécurité informatique": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop",
+};
+
 const colors = ["#3b82f6","#10b981","#f59e0b","#ef4444","#4e0ee5","#ec4899","#030303"];
 
 function Services() {
+    useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.services-hero, .services-section, .happy-clients, .tech-stack-section, .services-cta')
+        .forEach(el => observer.observe(el));
+}, []);
+
     const [services, setServices] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
@@ -37,23 +62,24 @@ function Services() {
             </section>
 
             {/* SECTION 2 - TES SERVICES */}
-            <section className="home-services">
-                <p className="services-intro">Découvrez les services informatiques que nous proposons.</p>
-
-                {loading ? <p className="loading-message">Chargement des services...</p> : 
-                 error ? <p className="error-message">{error}</p> :
-                <div className="home-services-container">
-                    {services.length === 0 ? <p style={{color:"#9ca3af"}}>Aucun service disponible.</p> :
-                    services.map((service, index) => (
-                        <div className="home-service-card" key={service.id || service.nom} style={{ borderTopColor: colors[index % colors.length] }}>
-                            <h3>{service.nom}</h3>
-                            <p>{service.description}</p>
-                            <p className="home-service-price">Prix : {service.prix}</p>
-                        </div>
-                    ))}
-                </div>
-                }
-            </section>
+            <section className="services-section">
+  <h2>Nos Services Informatiques</h2>
+  <div className="services-grid">
+    {services.length > 0 ? services.map((s) => {
+      const imgSrc = s.image ? `/uploads/${s.image}` : (defaultImages[s.nom] || defaultImages["Développement web"]);
+      return (
+        <div key={s.id} className="service-card">
+          <div className="card-img">
+            <img src={imgSrc} alt={s.nom} />
+          </div>
+          <h3>{s.nom}</h3>
+          <p>{s.description}</p>
+          <span className="prix">{Number(s.prix).toLocaleString()} FBU</span>
+        </div>
+      )
+    }) : <p className="loading">Chargement...</p>}
+  </div>
+</section>
 
             {/* SECTION 3 - STACK TECHNOLOGIQUE */}
            <section className="happy-clients">
@@ -90,7 +116,7 @@ function Services() {
                 <div className="cta-left">
                     <h2>Prêt à digitaliser votre organisation ?</h2>
                     <p>Parlons de votre projet. Devis gratuit en moins de 24h.</p>
-                    <a href="/contact" className="cta-btn">Demander un devis</a>
+                    <a href="/devis" className="cta-btn">Demander un devis</a>
                 </div>
                 <div className="cta-right">
                     <img src={droite} alt="Logo" />
@@ -99,113 +125,129 @@ function Services() {
 
             {/* FOOTER */}
              <footer className="contact-footer">
-
-                <div className="footer-container">
-
-                    {/* Logo / présentation */}
-                    <div className="footer-column footer-about">
-
-                        <h2>
-                            Info<span>Services</span>
-                        </h2>
-
-                        <p>
-                            Votre partenaire informatique pour des
-                            solutions modernes, fiables et adaptées
-                            à vos besoins.
-                        </p>
-
-                    </div>
-
-
-                    {/* Navigation */}
-                    <div className="footer-column">
-
-                        <h3>
-                            Navigation
-                        </h3>
-
-                       <div className="footer-column">
-    <h3>Navigation</h3>
-
-    <Link to="/">Accueil</Link>
-    <Link to="/services">Services</Link>
-    <Link to="/apropos">À propos</Link>
-    <Link to="/contact">Contact</Link>
-</div>
-
-                    </div>
-
-
-                    {/* Services */}
-                    <div className="footer-column">
-
-                        <h3>
-                            Nos services
-                        </h3>
-
-                        <a href="/services">
-                            Développement web
-                        </a>
-
-                        <a href="/services">
-                            Solutions informatiques
-                        </a>
-
-                        <a href="/services">
-                            Maintenance
-                        </a>
-
-                        <a href="/services">
-                            Conseil informatique
-                        </a>
-
-                    </div>
-
-
-                    {/* Contact */}
-                    <div className="footer-column">
-
-                        <h3>
-                            Contact
-                        </h3>
-
-                        <p>
-                             <i className="fa-solid fa-location-dot"></i> Bujumbura, Burundi
-                        </p>
-
-                        <p>
-                            ✉ alineniyomwungere99@gmail.com
-                        </p>
-
-                        <p>
-                            ☎ +257 62573421
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                {/* Bas du footer */}
-                <div className="footer-bottom">
-
-                    <p>
-                        © {new Date().getFullYear()} InfoServices.
-                        Tous droits réservés.
-                    </p>
-
-                    <div className="footer-social">
-
-                        <a href="https://www.facebook.com/p/Setic-Burundi-100067322347665/">Facebook</a>
-                        <a href="#">X</a>
-                        <a href="#">LinkedIn</a>
-
-                    </div>
-
-                </div>
-
-            </footer>
+             
+                             <div className="footer-container">
+             
+                                 {/* Logo / présentation */}
+                                 <div className="footer-column footer-about">
+             
+               <Link to="/" className="navbar-logo">
+                       <img src={logo} alt="Logo InfoServices" />
+                       <span>InfoServices</span>
+                     </Link>
+                                     {/* <h2>
+                                         Info<span>Services</span>
+                                     </h2> */}
+             
+                                           <div className="social-links">
+             
+                                             <a
+                                                 href="https://www.facebook.com/profile.php?id=100081083984402&sk=reels_tab"
+                                                 className="social facebook"
+                                             >
+                                                 f
+                                             </a>
+             
+                                             <a
+                                                 href="#"
+                                                 className="social twitter"
+                                             >
+                                                 X
+                                             </a>
+             
+                                             <a
+                                                 href="#"
+                                                 className="social linkedin"
+                                             >
+                                                 in
+                                             </a>
+             
+                                         </div>
+             
+                                 </div>
+             
+             
+                                 {/* Navigation */}
+                                 <div className="footer-column">
+             
+                                     <h3>
+                                         Navigation
+                                     </h3>
+             
+                                    <div className="footer-column">
+              
+                 <Link to="/">Accueil</Link>
+                 <Link to="/services">Services</Link>
+                 <Link to="/apropos">À propos</Link>
+                 <Link to="/contact">Contact</Link>
+             </div>
+             
+                                 </div>
+             
+             
+                                 {/* Services */}
+                                 <div className="footer-column">
+             
+                                     <h3>
+                                         Nos services
+                                     </h3>
+             
+                                     <a href="/services">
+                                         Développement web
+                                     </a>
+             
+                                     <a href="/services">
+                                         Solutions informatiques
+                                     </a>
+             
+                                     <a href="/services">
+                                         Maintenance
+                                     </a>
+             
+                                     <a href="/services">
+                                         Conseil informatique
+                                     </a>
+             
+                                 </div>
+             
+             
+                                 {/* Contact */}
+                                 <div className="footer-column">
+             
+                                     <h3>
+                                         Contact
+                                     </h3>
+             
+                                     <p>
+                                          Bujumbura, Burundi
+                                     </p>
+             
+                                     <p>
+                                          alineniyomwungere99@gmail.com
+                                     </p>
+             
+                                     <p>
+                                          +257 62573421
+                                     </p>
+             
+                                 </div>
+             
+                             </div>
+             
+             
+                             {/* Bas du footer */}
+                             <div className="footer-bottom">
+             
+                                 <p>
+                                     © {new Date().getFullYear()} InfoServices.
+                                     Tous droits réservés.
+                                 </p>
+             
+                             
+             
+                             </div>
+             
+                         </footer>
 
         </div>
     );

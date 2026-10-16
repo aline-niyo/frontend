@@ -449,125 +449,96 @@
 ========================================================= */
 
 .services-section {
-    padding: 80px 8%;
-
-    background: #fdfefd;
+  padding: 60px 5%;
+  background: #f8fafc;
 }
 
 .services-grid {
-    max-width: 1000px;
-
-    margin: 0 auto;
-
-    display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
-
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .service-card {
-    padding: 25px 25px;
-
-    background: #263044;
-
-    border: 1px solid #ecf0ec;
-
-    border-radius: 20px;
-
-    text-align: center;
-
-    cursor: pointer;
-
-    transition: 0.3s ease;
+  background: #ffffff;
+  border: 2px solid #eef2f7;
+  border-radius: 16px;
+  padding: 30px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
 }
 
-.service-card:hover,
+.service-card:hover {
+  border-color: #0f172a;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.07);
+}
+
+/* Carte ACTIVE quand on clique */
 .service-card.active {
-    transform: translateY(-8px);
-
-    border-color: #f8f9fb;
-
-    box-shadow:
-        0 15px 35px rgba(0, 80, 120, 0.12);
+  background: #0f172a;
+  border-color: #0f172a;
+  color: #fff;
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.2);
 }
 
 .service-icon-wrapper {
-    width: 65px;
-    height: 65px;
-
-    margin: 0 auto 20px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 15px;
-
-    /* background: #e3f8ff; */
-
-    color: #3805f3;
+  width: 60px;
+  height: 60px;
+  background: #f1f5f9;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+  color: #0f172a;
 }
 
-.service-icon {
-    width: 45px;
-    height: 45px;
+/* Icône en blanc quand active */
+.service-card.active .service-icon-wrapper {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
 }
 
 .service-title {
-    color: #f3f6f9;
-
-    font-size: 16px;
-
-    margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 0;
+  line-height: 1.4;
 }
 
-/* Base pour toutes les cartes */
-.service-card {
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+.service-card.active .service-title {
+  color: #ffffff;
 }
 
-/* Base pour toutes les cartes */
-.service-card {
-  transform: translateY(0); /* position normale = en bas */
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+/* Responsive */
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .service-card {
+    padding: 20px 12px;
+    min-height: 150px;
+  }
+  .service-icon-wrapper {
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+  }
 }
-
-/* La 2ème carte différente */
-.service-card:nth-child(2) {
-  background: #ec4021;
-  color: rgb(10, 10, 10);
-}
-
-/* Quand tu mets le curseur -> ça monte */
-.service-card:hover,
-.service-card.active {
-  transform: translateY(-8px); /* monte */
-  border-color: #f8f9fb;
-  box-shadow: 0 15px 35px rgba(0, 80, 120, 0.12);
-}
-
-/* Base pour toutes les cartes */
-.service-card {
-  transform: translateY(0);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-}
-
-/* La 2ème carte différente */
-.service-card:nth-child(2) {
-  background: #ec4021;
-  color: rgb(10, 10, 10);
-}
-
-/* Quand tu mets le curseur -> ça monte */
-.service-card:hover,
-.service-card.active {
-  transform: translateY(-8px); /* monte */
-  border-color: #f8f9fb;
-  box-shadow: 0 15px 35px rgba(0, 80, 120, 0.12);
-}
-
 
 /* =========================================================
    STATISTIQUES
@@ -975,29 +946,29 @@
 
 .happy-clients-track {
   display: flex;
-  gap: 20px;
+  /* gap: 30px; */
   margin-top: 10px;
   width: max-content;
-  animation: scroll 25s linear infinite;
+  animation: scroll 2s linear infinite;
 }
 
 .client-card {
   min-width: 150px;
-  height: 80px;
+  height: 100px;
   background: #f8f8f8;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
+  padding: 15px;
 }
 
 .client-card img {
-  max-width: 100px;
-  max-height: 50px;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
+  transform: scale(1.4);
 }
-
 @keyframes scroll {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -1549,42 +1520,201 @@
 }
 
 /* =========================================================
-   FOOTER BOTTOM
+   SECTION 3 : FOOTER
 ========================================================= */
 
-.footer-bottom {
+.contact-footer {
 
-    max-width: 1250px;
+    background: #080808;
+
+    color: white;
+
+    padding-top: 70px;
+}
+
+
+/* Contenu footer */
+
+.footer-container {
+
+    max-width: 1200px;
 
     margin: auto;
 
-    padding: 25px 6%;
+    padding: 0 6% 60px;
 
-    border-top: 1px solid #1e293b;
+    display: grid;
+
+    grid-template-columns:
+        1.5fr
+        1fr
+        1.2fr
+        1.3fr;
+
+    gap: 50px;
+}
+
+
+/* Colonnes */
+
+.footer-column {
 
     display: flex;
+    flex-direction: column;
+line-height: 0.5;
+ /* font-size: 10px; */
+    gap: 13px;
+    
+}
 
-    justify-content: space-between;
+.footer-column h3 {
 
+    color: white;
+
+    font-size: 17px;
+
+    margin: 0 0 15px;
+}
+
+/* logo */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  background: rgba(10, 25, 50, 0.6); /* Capsule sombre néon */
+  border: 1px solid rgba(0, 150, 255, 0.4);
+  border-radius: 30px;
+  padding: 6px 18px 6px 8px;
+  backdrop-filter: blur(8px);
+  transition: border-color 0.3s ease;
+}
+.footer-column p {
+
+    color: #eff0f1;
+
+    line-height: 1.;
+
+    font-size: 14px;
+
+    margin: 0;
+}
+
+.footer-about p {
+
+    max-width: 320px;
+}
+
+.footer-column a {
+
+    color: #f0f2f4;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    transition: 0.3s;
+}
+
+.footer-column a:hover {
+
+    color: #a5abae;
+
+    padding-left: 5px;
+}
+
+
+/* =========================================================
+   FOOTER BOTTOM
+========================================================= */
+.social-section {
+
+    margin-top: 45px;
+}
+
+.social-section h3 {
+
+    font-family: 'Times New Roman', Times, serif;
+
+    font-size: 20px;
+
+    color: #2e2e2e;
+
+    margin-bottom: 20px;
+}
+
+.social-links {
+    display: flex;
+    gap: 12px;
     align-items: center;
+    margin-top: 20px;
+}
 
-    gap: 20px;
+.social {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px; /* carré arrondi */
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    transition: transform 0.2s;
+}
+
+.social:hover {
+    transform: scale(1.1);
+}
+
+/* FACEBOOK - carré bleu */
+.social.facebook {
+    background: #1877F2;
+    font-size: 20px;
+     width: 28px; 
+    height: 28px;
+    font-family: Arial, sans-serif;
+}
+
+/* X / TWITTER - agrandi */
+.social.twitter {
+    background: #000000;
+    font-size: 20px; /* agrandi */
+    font-weight: 800;
+    width: 30px; /* un peu plus grand que les autres */
+    height: 30px;
+}
+
+/* LINKEDIN - carré */
+.social.linkedin {
+    background: #0077B5;
+    font-size: 16px;
+    border-radius: 8px;
+     width: 28px; 
+    height: 28px;
+}
+
+
+.footer-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
 }
 
 .footer-bottom p {
-
-    margin: 0;
-
-    color: #64748b;
-
-    font-size: 13px;
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
 }
+
 
 .footer-social {
 
     display: flex;
 
-    gap: 20px;
+    gap: 15px;
 }
 
 .footer-social a {
@@ -1598,10 +1728,11 @@
     transition: 0.3s;
 }
 
-.footer-social a:hover {
+/* .footer-social a:hover {
 
-    color: #38bdf8;
-}
+    color: #505152;
+} */
+
 
 
 /* =========================================================
@@ -1645,3 +1776,58 @@
     width: 60;
     height: 40;
 }
+
+/* stack */
+/* .api-logos{position:relative;z-index:10; margin-top:64px;display:flex;flex-direction:column;gap:24px;align-items:center}
+.api-logos-row{display:flex;gap:24px;flex-wrap:wrap;justify-content:center}
+.api-logo{width:60px;height:60px;object-fit:contain;filter:drop-shadow(0 0 20px rgba(255,255,255,.15)) drop-shadow(0 8px 20px rgba(0,0,0,.8));animation:floatLogo 4s ease-in-out infinite}
+@keyframes floatLogo{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-10px) rotate(var(--r,0deg))}}
+@media(max-width:768px){.api-logo{width:50px;height:50px}} */
+
+
+/* l'écriture monte */
+@keyframes textUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* état de départ des textes = invisible en bas */
+.hero-title, .hero-subtitle, .hero-actions,
+.section-subtitle, .section-heading h2, .section-heading p,
+.about-home-content h2, .about-home-content p, .section-button,
+.stat-value, .stat-label, .solution-card h3, .solution-card p,
+/* .process-card h3, .process-card p, .footer-column h3, .footer-column p, .footer-column a, */
+.happy-clients-header h2, .happy-clients-header p {
+  opacity: 0;
+}
+
+/* quand la section est vue, SEULEMENT ses textes montent */
+.hero-section.in-view .hero-title {
+  animation: textUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.hero-section.in-view .hero-subtitle {
+  animation: textUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
+}
+.hero-section.in-view .hero-actions {
+  animation: textUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+}
+
+/* toutes les autres sections : titre puis paragraphe qui montent */
+.in-view .section-subtitle { animation: textUp 0.6s ease-out forwards; }
+.in-view .section-heading h2,
+.in-view .about-home-content h2,
+.in-view .happy-clients-header h2 { animation: textUp 0.6s ease-out 0.1s forwards; }
+
+.in-view .section-heading p,
+.in-view .about-home-content p,
+.in-view .happy-clients-header p,
+.in-view .solution-card p,
+.in-view .process-card p { animation: textUp 0.6s ease-out 0.2s forwards; }
+
+.in-view .solution-card h3,
+.in-view .process-card h3,
+.in-view .stat-value { animation: textUp 0.6s ease-out 0.15s forwards; }
+
+.in-view .section-button,
+.in-view .stat-label { animation: textUp 0.6s ease-out 0.3s forwards; }
+/* .in-view .footer-column h3 { animation: textUp 0.6s ease-out 0.3s forwards; } */

@@ -24,7 +24,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.65);
+  background: rgba(28, 27, 27, 0.65);
 }
 
 .services-hero > * {
@@ -145,9 +145,9 @@
   display: flex;
   gap: 5px;
   width: max-content;
-  animation: scroll 30s linear infinite;
+  animation: scroll 20s steps(10) infinite; /* bouge par à-coups */
+  animation-delay: 1s;
 }
-
 .happy-clients-marquee-wrapper:hover .happy-clients-track {
   animation-play-state: paused;
 }
@@ -167,7 +167,7 @@
 }
 
 .client-card img {
-  height: 64px;
+  height: 100%;
   width: auto;
   object-fit: contain;
 }
@@ -347,7 +347,7 @@
 
 .contact-footer {
 
-    background: #050b16;
+    background: #080808;
 
     color: white;
 
@@ -359,7 +359,7 @@
 
 .footer-container {
 
-    max-width: 1250px;
+    max-width: 1200px;
 
     margin: auto;
 
@@ -382,40 +382,40 @@
 .footer-column {
 
     display: flex;
-
     flex-direction: column;
-
+line-height: 0.5;
+ /* font-size: 10px; */
     gap: 13px;
+    
 }
 
 .footer-column h3 {
 
     color: white;
 
-    font-size: 18px;
+    font-size: 17px;
 
     margin: 0 0 15px;
 }
 
-.footer-column h2 {
-
-    font-family: Georgia, serif;
-
-    font-size: 32px;
-
-    margin: 0;
+/* logo */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  background: rgba(10, 25, 50, 0.6); /* Capsule sombre néon */
+  border: 1px solid rgba(0, 150, 255, 0.4);
+  border-radius: 30px;
+  padding: 6px 18px 6px 8px;
+  backdrop-filter: blur(8px);
+  transition: border-color 0.3s ease;
 }
-
-.footer-column h2 span {
-
-    color: #0d6efd;
-}
-
 .footer-column p {
 
-    color: #94a3b8;
+    color: #eff0f1;
 
-    line-height: 1.7;
+    line-height: 1.;
 
     font-size: 14px;
 
@@ -429,18 +429,18 @@
 
 .footer-column a {
 
-    color: #94a3b8;
+    color: #f0f2f4;
 
     text-decoration: none;
 
-    font-size: 14px;
+    font-size: 13px;
 
     transition: 0.3s;
 }
 
 .footer-column a:hover {
 
-    color: #38bdf8;
+    color: #a5abae;
 
     padding-left: 5px;
 }
@@ -449,40 +449,94 @@
 /* =========================================================
    FOOTER BOTTOM
 ========================================================= */
+.social-section {
+
+    margin-top: 45px;
+}
+
+.social-section h3 {
+
+    font-family: 'Times New Roman', Times, serif;
+
+    font-size: 20px;
+
+    color: #2e2e2e;
+
+    margin-bottom: 20px;
+}
+
+.social-links {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.social {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px; /* carré arrondi */
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    transition: transform 0.2s;
+}
+
+.social:hover {
+    transform: scale(1.1);
+}
+
+/* FACEBOOK - carré bleu */
+.social.facebook {
+    background: #1877F2;
+    font-size: 20px;
+     width: 28px; 
+    height: 28px;
+    font-family: Arial, sans-serif;
+}
+
+/* X / TWITTER - agrandi */
+.social.twitter {
+    background: #000000;
+    font-size: 20px; /* agrandi */
+    font-weight: 800;
+    width: 30px; /* un peu plus grand que les autres */
+    height: 30px;
+}
+
+/* LINKEDIN - carré */
+.social.linkedin {
+    background: #0077B5;
+    font-size: 16px;
+    border-radius: 8px;
+     width: 28px; 
+    height: 28px;
+}
+
 
 .footer-bottom {
-
-    max-width: 1250px;
-
-    margin: auto;
-
-    padding: 25px 6%;
-
-    border-top: 1px solid #1e293b;
-
     display: flex;
-
-    justify-content: space-between;
-
+    justify-content: center;
     align-items: center;
-
-    gap: 20px;
+    text-align: center;
+    width: 100%;
 }
 
 .footer-bottom p {
-
-    margin: 0;
-
-    color: #64748b;
-
-    font-size: 13px;
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
 }
+
 
 .footer-social {
 
     display: flex;
 
-    gap: 20px;
+    gap: 15px;
 }
 
 .footer-social a {
@@ -496,10 +550,165 @@
     transition: 0.3s;
 }
 
-.footer-social a:hover {
+/* .footer-social a:hover {
 
-    color: #38bdf8;
+    color: #505152;
+} */
+
+
+/* nos services informatiques */
+.services-section {
+  background: #faf8f6;
+  padding: 50px 20px;
 }
 
+.services-section h2 {
+  text-align: center;
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: #111827;
+  margin-bottom: 32px;
+}
+
+.services-grid {
+  max-width: 1100px; /* un peu moins large pour que 3 tiennent bien */
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 par ligne */
+  gap: 24px;
+}
+
+.service-card {
+  background: #ffffff;
+  border-radius: 20px; /* plus petit */
+  padding: 12px 12px 20px 12px;
+  border: 1px solid rgba(0,0,0,0.04);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.05);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+}
+
+.card-img {
+  width: 100%;
+  height: 160px; /* IMAGE DIMINUÉE - avant 240px */
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 14px;
+  background: #f1f5f9;
+}
+
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.service-card h3 {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 18px; /* TITRE DIMINUÉ - avant 23px */
+  line-height: 1.3;
+  color: #111827;
+  margin: 0 0 8px 0;
+  padding: 0 8px;
+}
+
+.service-card p {
+  font-size: 13px; /* PARAGRAPHE DIMINUÉ - avant 15px */
+  line-height: 1.5;
+  color: #5b6577;
+  padding: 0 8px;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* 3 lignes au lieu de 4 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.service-card .prix {
+  margin-top: auto;
+  padding-top: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.loading {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #6b7280;
+}
+
+/* Responsive - reste 3 sur tablette, 1 sur mobile */
+@media (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .card-img {
+    height: 140px;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 par ligne sur tablette */
+  }
+}
+
+@media (max-width: 640px) {
+  .services-grid {
+    grid-template-columns: 1fr; /* 1 par ligne sur téléphone */
+    max-width: 360px;
+  }
+}
+
+/*fin os services informatiques*/
+
+
+/* écriture qui monte */
+@keyframes textUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* départ invisible */
+.services-hero h1, .services-hero p,
+.services-section h2, .service-card h3, .service-card p, .service-card .prix,
+.happy-clients-header h2, .happy-clients-header p,
+.cta-text h3, .cta-text p, .cta-button,
+.cta-left h2, .cta-left p, .cta-btn {
+  opacity: 0;
+}
+
+/* HERO */
+.services-hero.in-view h1 { animation: textUp 0.7s cubic-bezier(0.22,1,0.36,1) forwards; }
+.services-hero.in-view p { animation: textUp 0.6s ease-out 0.15s forwards; }
+
+/* TES SERVICES */
+.services-section.in-view h2 { animation: textUp 0.6s ease-out forwards; }
+.services-section.in-view .service-card h3 { animation: textUp 0.6s ease-out 0.1s forwards; }
+.services-section.in-view .service-card p { animation: textUp 0.6s ease-out 0.15s forwards; }
+.services-section.in-view .service-card .prix { animation: textUp 0.6s ease-out 0.2s forwards; }
+
+/* STACK */
+.happy-clients.in-view .happy-clients-header h2 { animation: textUp 0.6s ease-out forwards; }
+.happy-clients.in-view .happy-clients-header p { animation: textUp 0.6s ease-out 0.1s forwards; }
+.tech-stack-section.in-view .cta-text h3 { animation: textUp 0.6s ease-out forwards; }
+.tech-stack-section.in-view .cta-text p { animation: textUp 0.6s ease-out 0.1s forwards; }
+.tech-stack-section.in-view .cta-button { animation: textUp 0.6s ease-out 0.2s forwards; }
+
+/* CTA FINALE */
+.services-cta.in-view .cta-left h2 { animation: textUp 0.6s ease-out forwards; }
+.services-cta.in-view .cta-left p { animation: textUp 0.6s ease-out 0.1s forwards; }
+.services-cta.in-view .cta-btn { animation: textUp 0.6s ease-out 0.2s forwards; }
 
 

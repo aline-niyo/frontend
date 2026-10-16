@@ -1,5 +1,7 @@
 
-import React, { useState } from "react";
+// import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
 import { Link } from "react-router-dom";
 import "./Accueil.css";
 import logogoogle from "../assets/google.webp";
@@ -16,10 +18,23 @@ import logo4 from "../assets/logos/abrema.png";
 import logo5 from "../assets/logos/abddm.png";
 import logo6 from "../assets/logos/pamac.png";
 
+import logo from "../assets/logo.png";
 
 
 function Accueil() {
-  const [activeService, setActiveService] = useState(2);
+  useEffect(() => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target); // on fige après
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.hero-section, .trust-bar, .stats-section, .about-home-section, .solutions-section, .happy-clients, .process-section')
+    .forEach(el => observer.observe(el));
+}, []);
+  
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
   // =====================================================
@@ -278,6 +293,22 @@ function Accueil() {
 
           </div>
 
+          {/* stack */}
+  {/* <div className="api-logos">
+    <div className="api-logos-row">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg" alt="NGINX" className="api-logo" style={{transform:'rotate(-8deg)'}} />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" alt="Laravel" className="api-logo" style={{transform:'rotate(6deg)'}} />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" className="api-logo" style={{transform:'rotate(-5deg)'}} />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" className="api-logo" style={{transform:'rotate(7deg)'}} />
+    </div>
+    <div className="api-logos-row">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="Angular" className="api-logo" style={{transform:'rotate(-6deg)'}} />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg" alt="WordPress" className="api-logo" style={{transform:'rotate(5deg)'}} />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue" className="api-logo" style={{transform:'rotate(-7deg)'}} />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" className="api-logo" style={{transform:'rotate(8deg)'}} />
+    </div>
+  </div> */}
+
         </div>
 
       </section>
@@ -287,7 +318,7 @@ function Accueil() {
           SERVICES
       ===================================================== */}
 
-      <section className="services-section">
+      {/* <section className="services-section">
 
         <div className="services-grid">
 
@@ -319,7 +350,10 @@ function Accueil() {
 
         </div>
 
-      </section>
+      </section> */}
+
+
+
 
 
       {/* =====================================================
@@ -693,23 +727,48 @@ Découvrez nos principales solutions digitales pour développer votre activité.
       {/* =====================================================
           BARRE DE CONTACT
       ===================================================== */}
-
-      <footer className="contact-footer">
+  {/* =====================================================
+                SECTION 3 : FOOTER
+            ====================================================== */}
+            <footer className="contact-footer">
 
                 <div className="footer-container">
 
                     {/* Logo / présentation */}
                     <div className="footer-column footer-about">
 
-                        <h2>
+  <Link to="/" className="navbar-logo">
+          <img src={logo} alt="Logo InfoServices" />
+          <span>InfoServices</span>
+        </Link>
+                        {/* <h2>
                             Info<span>Services</span>
-                        </h2>
+                        </h2> */}
 
-                        <p>
-                            Votre partenaire informatique pour des
-                            solutions modernes, fiables et adaptées
-                            à vos besoins.
-                        </p>
+                              <div className="social-links">
+
+                                <a
+                                    href="https://www.facebook.com/profile.php?id=100081083984402&sk=reels_tab"
+                                    className="social facebook"
+                                >
+                                    f
+                                </a>
+
+                                <a
+                                    href="#"
+                                    className="social twitter"
+                                >
+                                    X
+                                </a>
+
+                                <a
+                                    href="#"
+                                    className="social linkedin"
+                                >
+                                    in
+                                </a>
+
+                            </div>
 
                     </div>
 
@@ -722,6 +781,7 @@ Découvrez nos principales solutions digitales pour développer votre activité.
                         </h3>
 
                        <div className="footer-column">
+ 
     <Link to="/">Accueil</Link>
     <Link to="/services">Services</Link>
     <Link to="/apropos">À propos</Link>
@@ -765,15 +825,15 @@ Découvrez nos principales solutions digitales pour développer votre activité.
                         </h3>
 
                         <p>
-                             <i className="fa-solid fa-location-dot"></i> Bujumbura, Burundi
+                             Bujumbura, Burundi
                         </p>
 
                         <p>
-                            ✉ alineniyomwungere99@gmail.com
+                             alineniyomwungere99@gmail.com
                         </p>
 
                         <p>
-                            ☎ +257 62573421
+                             +257 62573421
                         </p>
 
                     </div>
@@ -789,20 +849,11 @@ Découvrez nos principales solutions digitales pour développer votre activité.
                         Tous droits réservés.
                     </p>
 
-                    <div className="footer-social">
-
-                        <a href="https://www.facebook.com/p/Setic-Burundi-100067322347665/">Facebook</a>
-                        <a href="#">X</a>
-                        <a href="#">LinkedIn</a>
-
-                    </div>
+                
 
                 </div>
 
             </footer>
-
-
-
       {/* =====================================================
           MODAL VIDÉO
       ===================================================== */}

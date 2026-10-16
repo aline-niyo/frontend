@@ -1,9 +1,23 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import logo from "../assets/logo.png";
 
 import "./Contact.css";
 
 function Contact() {
+     useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.contact-hero, .contact-section')
+            .forEach(el => observer.observe(el));
+    }, []);
+    
     const [formData, setFormData] = useState({
         nom: "",
         email: "",
@@ -149,110 +163,79 @@ function Contact() {
 
                         <form onSubmit={handleSubmit}>
 
-                            <div className="form-row">
+  <div className="form-row">
+    <div className="form-group">
+      <label htmlFor="nom">Nom :</label>
+      <input
+        id="nom"
+        type="text"
+        name="nom"
+        value={formData.nom}
+        onChange={handleChange}
+        placeholder="Votre nom"
+        required
+      />
+    </div>
 
-                                <div className="form-group">
-                                    <label htmlFor="nom">
-                                        Nom *
-                                    </label>
+    <div className="form-group">
+      <label htmlFor="email">Email :</label>
+      <input
+        id="email"
+        type="email"
+        name="email"
+        value={formData.email}
+        onChange={handleChange}
+        placeholder="exemple@email.com"
+        required
+      />
+    </div>
+  </div>
 
-                                    <input
-                                        id="nom"
-                                        type="text"
-                                        name="nom"
-                                        value={formData.nom}
-                                        onChange={handleChange}
-                                        placeholder="Votre nom"
-                                        required
-                                    />
-                                </div>
+  <div className="form-row">
+    <div className="form-group">
+      <label htmlFor="telephone">Téléphone :</label>
+      <input
+        id="telephone"
+        type="tel"
+        name="telephone"
+        value={formData.telephone}
+        onChange={handleChange}
+        placeholder="+257 XX XX XX XX"
+      />
+    </div>
 
-                                <div className="form-group">
-                                    <label htmlFor="email">
-                                        Email *
-                                    </label>
+    <div className="form-group">
+      <label htmlFor="sujet">Sujet :</label>
+      <input
+        id="sujet"
+        type="text"
+        name="sujet"
+        value={formData.sujet}
+        onChange={handleChange}
+        placeholder="Sujet de votre message"
+        required
+      />
+    </div>
+  </div>
 
-                                    <input
-                                        id="email"
-                                        type="email"
-                                        name="email"
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                        placeholder="exemple@email.com"
-                                        required
-                                    />
-                                </div>
+  <div className="form-group full">
+    <label htmlFor="message">Message :</label>
+    <textarea
+      id="message"
+      name="message"
+      value={formData.message}
+      onChange={handleChange}
+      placeholder="Écrivez votre message..."
+      rows="6"
+      required
+    ></textarea>
+  </div>
 
-                            </div>
+  <button type="submit" className="contact-button" disabled={loading}>
+    {loading ? "Envoi en cours..." : "Envoyer le message"}
+  </button>
 
-
-                            <div className="form-row">
-
-                                <div className="form-group">
-                                    <label htmlFor="telephone">
-                                        Téléphone
-                                    </label>
-
-                                    <input
-                                        id="telephone"
-                                        type="tel"
-                                        name="telephone"
-                                        value={formData.telephone}
-                                        onChange={handleChange}
-                                        placeholder="+257 XX XX XX XX"
-                                    />
-                                </div>
-
-                                <div className="form-group">
-                                    <label htmlFor="sujet">
-                                        Sujet *
-                                    </label>
-
-                                    <input
-                                        id="sujet"
-                                        type="text"
-                                        name="sujet"
-                                        value={formData.sujet}
-                                        onChange={handleChange}
-                                        placeholder="Sujet de votre message"
-                                        required
-                                    />
-                                </div>
-
-                            </div>
-
-
-                            <div className="form-group">
-
-                                <label htmlFor="message">
-                                    Message *
-                                </label>
-
-                                <textarea
-                                    id="message"
-                                    name="message"
-                                    value={formData.message}
-                                    onChange={handleChange}
-                                    placeholder="Écrivez votre message..."
-                                    rows="6"
-                                    required
-                                ></textarea>
-
-                            </div>
-
-
-                            <button
-                                type="submit"
-                                className="contact-button"
-                                disabled={loading}
-                            >
-                                {loading
-                                    ? "Envoi en cours..."
-                                    : "Envoyer le message"
-                                }
-                            </button>
-
-                        </form>
+</form>
 
                     </div>
 
@@ -276,59 +259,37 @@ function Contact() {
 
 
                         {/* Adresse */}
-                        <div className="contact-info-item">
-
-                            <div className="contact-icon">
-    <i className="fa-solid fa-location-dot"></i>
+<div className="contact-info-item">
+    <div className="contact-icon">
+        <i className="fa-solid fa-location-dot"></i>
+    </div>
+    <div>
+        <p>
+            Excellence House<br />
+            3ème étage
+        </p>
+    </div>
 </div>
-                            <div>
-                                {/* <h3>Notre adresse</h3> */}
 
-                                <p>
-                                    Excellence House<br />
-                                    3em etage<br />
-                                
-                                </p>
-                            </div>
+{/* Email */}
+<div className="contact-info-item">
+    <div className="contact-icon">
+        <i className="fa-solid fa-envelope"></i>
+    </div>
+    <div>
+        <p>alineniyomwungere99@gmail.com</p>
+    </div>
+</div>
 
-                        </div>
-
-
-                        {/* Email */}
-                        <div className="contact-info-item">
-
-                            <div className="contact-icon">
-                                ✉
-                            </div>
-
-                            <div>
-                                {/* <h3>Email</h3> */}
-
-                                <p>
-                                    alineniyomwungere99@gmail.com
-                                </p>
-                            </div>
-
-                        </div>
-
-
-                        {/* Téléphone */}
-                        <div className="contact-info-item">
-
-                            <div className="contact-icon">
-                                ☎
-                            </div>
-
-                            <div>
-                                {/* <h3>Téléphone</h3> */}
-
-                                <p>
-                                    +257 62573421
-                                </p>
-                            </div>
-
-                        </div>
-
+{/* Téléphone */}
+<div className="contact-info-item">
+    <div className="contact-icon">
+        <i className="fa-solid fa-phone"></i>
+    </div>
+    <div>
+        <p>+257 62573421</p>
+    </div>
+</div>
 
                         {/* Réseaux sociaux */}
                         <div className="social-section">
@@ -381,15 +342,38 @@ function Contact() {
                     {/* Logo / présentation */}
                     <div className="footer-column footer-about">
 
-                        <h2>
+  <Link to="/" className="navbar-logo">
+          <img src={logo} alt="Logo InfoServices" />
+          <span>InfoServices</span>
+        </Link>
+                        {/* <h2>
                             Info<span>Services</span>
-                        </h2>
+                        </h2> */}
 
-                        <p>
-                            Votre partenaire informatique pour des
-                            solutions modernes, fiables et adaptées
-                            à vos besoins.
-                        </p>
+                              <div className="social-links">
+
+                                <a
+                                    href="https://www.facebook.com/profile.php?id=100081083984402&sk=reels_tab"
+                                    className="social facebook"
+                                >
+                                    f
+                                </a>
+
+                                <a
+                                    href="#"
+                                    className="social twitter"
+                                >
+                                    X
+                                </a>
+
+                                <a
+                                    href="#"
+                                    className="social linkedin"
+                                >
+                                    in
+                                </a>
+
+                            </div>
 
                     </div>
 
@@ -402,8 +386,7 @@ function Contact() {
                         </h3>
 
                        <div className="footer-column">
-    <h3>Navigation</h3>
-
+ 
     <Link to="/">Accueil</Link>
     <Link to="/services">Services</Link>
     <Link to="/apropos">À propos</Link>
@@ -447,15 +430,15 @@ function Contact() {
                         </h3>
 
                         <p>
-                             <i className="fa-solid fa-location-dot"></i> Bujumbura, Burundi
+                             Bujumbura, Burundi
                         </p>
 
                         <p>
-                            ✉ alineniyomwungere99@gmail.com
+                             alineniyomwungere99@gmail.com
                         </p>
 
                         <p>
-                            ☎ +257 62573421
+                             +257 62573421
                         </p>
 
                     </div>
@@ -471,13 +454,7 @@ function Contact() {
                         Tous droits réservés.
                     </p>
 
-                    <div className="footer-social">
-
-                        <a href="https://www.facebook.com/p/Setic-Burundi-100067322347665/">Facebook</a>
-                        <a href="#">X</a>
-                        <a href="#">LinkedIn</a>
-
-                    </div>
+                
 
                 </div>
 
