@@ -774,21 +774,14 @@ Découvrez nos principales solutions digitales pour développer votre activité.
 
 
                     {/* Navigation */}
-                    <div className="footer-column">
-
-                        <h3>
-                            Navigation
-                        </h3>
-
-                       <div className="footer-column">
- 
+                   <div className="footer-column">
+    <h3>Navigation</h3>
     <Link to="/">Accueil</Link>
     <Link to="/services">Services</Link>
     <Link to="/apropos">À propos</Link>
     <Link to="/contact">Contact</Link>
 </div>
-
-                    </div>
+                  
 
 
                     {/* Services */}

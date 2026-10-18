@@ -101,13 +101,8 @@ function Contact() {
 
                 <div className="contact-hero-content">
 
-                    <span className="contact-small-title">
-                        CONTACTEZ-NOUS
-                    </span>
-
                     <h1>
-                        Parlons de votre
-                        <span> projet</span>
+                        Contactez-nous
                     </h1>
 
                     <p>

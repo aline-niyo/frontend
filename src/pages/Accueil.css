@@ -125,11 +125,11 @@
 .hero-title {
     margin: 0;
 
-    font-size: clamp(30px, 4vw, 40px);
+    font-size: clamp(45px, 3vw, 40px) !important ;
 
     line-height: 1.05;
 
-    font-weight: 400;
+    font-weight: 700 !important;
 
     letter-spacing: 0.5px;
 
@@ -141,9 +141,9 @@
 
     margin-top: 25px;
 
-    font-size: 18px;
+    font-size: 20px !important;
 
-    line-height: 1.8;
+    line-height: 1.5;
 
     color: #b8cada;
 }
@@ -600,7 +600,7 @@
 
     color: #657789;
 
-    font-size: 15px;
+    font-size: 14px !important;
 }
 
 /* .stat-cta {
@@ -729,7 +729,7 @@
 }
 
 .about-home-content h2 {
-    font-size: 18px;
+    font-size: 25px !important;
 
     color: #071d35;
 
@@ -743,16 +743,16 @@
 .about-home-content p {
     color: #526779;
 
-    line-height: 1.8;
+    line-height: 1.5;
 
-    font-size: 13px;
+    font-size: 18px !important;
 }
 
 .section-subtitle {
     display: inline-block;
 
     color: #080808;
-    font-size: 18px;
+    font-size: 25px;
     font-style: italic;
 
     font-weight: 500;
@@ -795,7 +795,7 @@
 ========================================================= */
 
 .solutions-section {
-    padding: 80px 8%;
+    padding: 50px 8%;
 
     background: #cfd9e7;
 }
@@ -809,7 +809,7 @@
 }
 
 .section-heading h2 {
-    font-size: 20px;
+    font-size: 25px;
     color: #071d35;
     margin: 12px 0 15px;
 }
@@ -820,8 +820,8 @@
 
 .section-heading p {
     color: #141515;
-
-    line-height: 1.7;
+ font-size: 18px;
+    line-height: 1.5;
 }
 
 .solutions-grid {
@@ -913,7 +913,7 @@
 .happy-clients {
   width: 100%;
   margin: 0 !important;
-  padding: 20px 0 !important;
+  padding: 40px 0 !important;
   overflow: hidden;
   background: #fff;
 }
@@ -932,10 +932,10 @@
 }
 
 .happy-clients-header p {
-  font-size: 1rem;
+  font-size: 18px !important;
   color: #555;
   margin-top: 8px !important;
-  line-height: 1.5;
+  line-height: 0.5;
 }
 
 .happy-clients-marquee-wrapper {
@@ -1519,64 +1519,55 @@
     }
 }
 
-/* =========================================================
+/* =====================================================
    SECTION 3 : FOOTER
-========================================================= */
-
+====================================================== */
 .contact-footer {
-
-    background: #080808;
-
-    color: white;
-
-    padding-top: 70px;
+  background-color: #0f172a; /* bleu très foncé */
+  color: #cbd5e1;
+  padding: 60px 20px 20px;
+  font-family: 'Inter', sans-serif;
 }
-
-
-/* Contenu footer */
 
 .footer-container {
-
-    max-width: 1200px;
-
-    margin: auto;
-
-    padding: 0 6% 60px;
-
-    display: grid;
-
-    grid-template-columns:
-        1.5fr
-        1fr
-        1.2fr
-        1.3fr;
-
-    gap: 50px;
+  max-width: 1250px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 50px !important;
+  padding-bottom: 40px;
 }
 
-
-/* Colonnes */
-
+/* --- Colonnes --- */
 .footer-column {
-
-    display: flex;
-    flex-direction: column;
-line-height: 0.5;
- /* font-size: 10px; */
-    gap: 13px;
-    
+  display: flex;
+  flex-direction: column;
 }
 
 .footer-column h3 {
-
-    color: white;
-
-    font-size: 17px;
-
-    margin: 0 0 15px;
+  color: #ffffff;
+  font-size: 1.2rem !important; /* agrandi un peu */
+  font-weight: 600;
+  margin-bottom: 16px !important;
+  letter-spacing: 0.5px;
 }
 
-/* logo */
+.footer-column a, 
+.footer-column p {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 1rem !important; /* agrandi un peu - pas trop gros */
+  line-height: 0.98;
+  transition: all 0.3s ease;
+}
+
+.footer-column a:hover {
+  color: #38bdf8;
+  transform: translateX(3px);
+}
+
+/* --- Logo / About --- */
+/* --- LOGO --- */
 .navbar-logo {
   display: flex;
   align-items: center;
@@ -1589,150 +1580,86 @@ line-height: 0.5;
   backdrop-filter: blur(8px);
   transition: border-color 0.3s ease;
 }
-.footer-column p {
 
-    color: #eff0f1;
-
-    line-height: 1.;
-
-    font-size: 14px;
-
-    margin: 0;
+.navbar-logo:hover {
+  border-color: rgba(0, 210, 255, 0.8);
 }
 
-.footer-about p {
-
-    max-width: 320px;
+.navbar-logo img {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
 }
 
-.footer-column a {
-
-    color: #f0f2f4;
-
-    text-decoration: none;
-
-    font-size: 13px;
-
-    transition: 0.3s;
+.navbar-logo span {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
 }
-
-.footer-column a:hover {
-
-    color: #a5abae;
-
-    padding-left: 5px;
-}
-
-
-/* =========================================================
-   FOOTER BOTTOM
-========================================================= */
-.social-section {
-
-    margin-top: 45px;
-}
-
-.social-section h3 {
-
-    font-family: 'Times New Roman', Times, serif;
-
-    font-size: 20px;
-
-    color: #2e2e2e;
-
-    margin-bottom: 20px;
-}
-
 .social-links {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    margin-top: 20px;
+  display: flex;
+  gap: 12px;
+  margin-top: 10px !important;
+  margin-left: 15px;
 }
 
-.social {
-    width: 44px;
-    height: 44px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px; /* carré arrondi */
-    text-decoration: none;
-    font-weight: bold;
-    color: white;
-    transition: transform 0.2s;
+.social-links .social {
+  width: 42px !important;
+  height: 42px !important;
+  border-radius: 50%;
+  background-color: #1e293b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.5rem !important;
+  transition: all 0.3s ease;
 }
 
-.social:hover {
-    transform: scale(1.1);
+.social-links .social:hover {
+  background-color: #38bdf8;
+  transform: translateY(-3px);
 }
 
-/* FACEBOOK - carré bleu */
-.social.facebook {
-    background: #1877F2;
-    font-size: 20px;
-     width: 28px; 
-    height: 28px;
-    font-family: Arial, sans-serif;
-}
+.social.facebook:hover { background: #1877f2; }
+.social.twitter:hover { background: #000; }
+.social.linkedin:hover { background: #0a66c2; }
 
-/* X / TWITTER - agrandi */
-.social.twitter {
-    background: #000000;
-    font-size: 20px; /* agrandi */
-    font-weight: 800;
-    width: 30px; /* un peu plus grand que les autres */
-    height: 30px;
-}
-
-/* LINKEDIN - carré */
-.social.linkedin {
-    background: #0077B5;
-    font-size: 16px;
-    border-radius: 8px;
-     width: 28px; 
-    height: 28px;
-}
-
-
+/* --- Bas du footer --- */
 .footer-bottom {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100%;
+  max-width: 1250px;
+  margin: 0 auto;
+  border-top: 1px solid #1e293b;
+  padding-top: 20px;
+  text-align: center;
 }
 
 .footer-bottom p {
-    text-align: center;
-    width: 100%;
-    margin: 0 auto;
+  color: #64748b;
+  font-size: 0.9rem;
 }
 
-
-.footer-social {
-
-    display: flex;
-
-    gap: 15px;
+/* =====================================================
+   RESPONSIVE
+====================================================== */
+@media (max-width: 992px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+  }
 }
 
-.footer-social a {
-
-    color: #94a3b8;
-
-    text-decoration: none;
-
-    font-size: 13px;
-
-    transition: 0.3s;
+@media (max-width: 576px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .contact-footer {
+    padding: 40px 20px 20px;
+  }
 }
-
-/* .footer-social a:hover {
-
-    color: #505152;
-} */
-
 
 
 /* =========================================================
