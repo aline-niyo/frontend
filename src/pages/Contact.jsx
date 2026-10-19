@@ -48,7 +48,7 @@ function Contact() {
 
         try {
             const response = await fetch(
-                "http://localhost:8080/api/contact",
+                "https://infoservices-backend-production.up.railway.app/api/contact",
                 {
                     method: "POST",
                     headers: {

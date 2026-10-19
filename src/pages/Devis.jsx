@@ -42,7 +42,7 @@ useEffect(() => {
     const [loading, setLoading] = useState(false);
 
     // EN LOCAL - pas Render
-    const API_URL = "http://localhost:8080";
+    const API_URL = "https://infoservices-backend-production.up.railway.app";
 
     useEffect(() => {
         fetch(`${API_URL}/api/services`)
