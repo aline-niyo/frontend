@@ -45,7 +45,7 @@ function Services() {
     const [error, setError] = useState("");
 
     useEffect(() => {
-        fetch("https://infoservices-backend-production.up.railway.app")
+        fetch("https://infoservices-backend-production.up.railway.app/api/services")
             .then((res) => { if (!res.ok) throw new Error(); return res.json(); })
             .then((data) => { setServices(data); setLoading(false); })
             .catch(() => { setError("Impossible de récupérer les services."); setLoading(false); });
