@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import logo from "../assets/logo.png";
 import "./Devis.css";
 
-//1. Dictionnaire d'images par défaut
 const defaultImages = {
   "Développement web": "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=800&auto=format&fit=crop",
   "Développement d applications": "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=800&auto=format&fit=crop",
@@ -47,11 +46,9 @@ useEffect(() => {
                 return res.json();
             })
             .then((data) => {
-                console.log("Services du backend:", data);
                 setServices(data);
             })
             .catch(() => {
-                console.log("Backend pas lancé, j'utilise des faux services");
                 setServices([
                     { id: 1, nom: "Dépannage Informatique", description: "Réparation PC, virus, lenteur." },
                     { id: 2, nom: "Création Site Web", description: "Site vitrine, e-commerce." },
@@ -66,11 +63,11 @@ useEffect(() => {
         setFormData({ ...formData, [name]: value });
     };
 
-    // CORRIGÉ ICI - service_id et bonne route
     const handleSubmit = async (e) => {
         e.preventDefault();
         setSuccess(""); setError(""); setLoading(true);
         try {
+            // TON BACKEND VEUT service: {id} et pas service_id
             const dataToSend = {
                 nom: formData.nom,
                 prenom: formData.prenom,
@@ -80,24 +77,24 @@ useEffect(() => {
                 urgence: formData.urgence,
                 budget: formData.budget ? Number(formData.budget) : null,
                 dateSouhaitee: formData.dateSouhaitee || null,
-                service_id: Number(formData.service_id)
+                service: { id: Number(formData.service_id) }
             };
-            
-            console.log("J'envoie:", dataToSend);
 
-            const response = await fetch(`${API_URL}/api/demandes_devis`, {
+            console.log("Envoi vers /api/devis:", dataToSend);
+
+            const response = await fetch(`${API_URL}/api/devis`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(dataToSend)
             });
 
+            const text = await response.text();
+            console.log("Réponse backend:", response.status, text);
+
             if (!response.ok) {
-                const txt = await response.text();
-                console.log("Erreur backend detail:", txt);
-                throw new Error(txt || "Erreur envoi");
+                throw new Error(text || `Erreur ${response.status}`);
             }
 
-            await response.json();
             setSuccess("Votre demande de devis a été envoyée avec succès !");
             setFormData({ nom: "", prenom: "", email: "", telephone: "", service_id: "", description: "", urgence: "Normale", budget: "", dateSouhaitee: "" });
         } catch (err) {
@@ -112,20 +109,16 @@ useEffect(() => {
         <div className="devis-page">
             <section className="section hero-section">
                 <h1>Nos services</h1>
-                <p>Nous fournissons des solutions numériques innovantes adaptées aux objectifs de votre entreprise. Du développement au design et bien plus encore, 
-                    nous sommes votre partenaire de confiance pour réussir dans le monde numérique.</p>
+                <p>Nous fournissons des solutions numériques innovantes adaptées aux objectifs de votre entreprise.</p>
                 <a href="#devis-form" className="hero-btn">Demander un devis</a>
             </section>
-
 <section className="services-section">
   <div className="services-grid">
     {services.length > 0 ? services.map((s) => {
       const imgSrc = s.image ? `/uploads/${s.image}` : (defaultImages[s.nom] || defaultImages["Développement web"]);
       return (
         <div key={s.id} className="service-card">
-          <div className="card-img">
-            <img src={imgSrc} alt={s.nom} />
-          </div>
+          <div className="card-img"><img src={imgSrc} alt={s.nom} /></div>
           <h3>{s.nom}</h3>
           <p>{s.description}</p>
           <span className="prix">{Number(s.prix).toLocaleString()} FBU</span>
@@ -162,73 +155,19 @@ useEffect(() => {
           <div className="form-group"><label>Budget (FBU)</label><input type="number" name="budget" value={formData.budget} onChange={handleChange} placeholder="Ex: 200000" /></div>
         </div>
         <div className="form-group"><label>Date souhaitée</label><input type="date" name="dateSouhaitee" value={formData.dateSouhaitee} onChange={handleChange} /></div>
-        <button type="submit" className="submit-button small" disabled={loading}>
-          {loading ? "Envoi..." : "Envoyer la demande"}
-        </button>
+        <button type="submit" className="submit-button small" disabled={loading}>{loading ? "Envoi..." : "Envoyer la demande"}</button>
       </form>
     </div>
     <div className="devis-info">
-      <div className="devis-image">
-        <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=800&auto=format&fit=crop" alt="Devis informatique" />
-      </div>
+      <div className="devis-image"><img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=800&auto=format&fit=crop" alt="Devis informatique" /></div>
       <h3>Votre projet, notre priorité</h3>
       <p>Nous vous répondons en moins de 24h avec un devis détaillé et transparent.</p>
-      <p>
-        <strong>✓ Devis gratuit</strong> - Sans engagement<br/>
-        <strong>✓ Réponse rapide</strong> - Sous 24 heures<br/>
-        <strong>✓ Support local</strong> - Basé à Bujumbura
-      </p>
+      <p><strong>✓ Devis gratuit</strong><br/><strong>✓ Réponse rapide</strong><br/><strong>✓ Support local</strong> - Bujumbura</p>
     </div>
   </div>
 </section>
-            <section className="section process-section">
-                <h2>Comment ça marche ?</h2>
-                <div className="process-steps">
-                    <div className="step"><span>1</span><h3>Vous demandez</h3><p>Vous remplissez le formulaire</p></div>
-                    <div className="step"><span>2</span><h3>Nous analysons</h3><p>Devis en 24h</p></div>
-                    <div className="step"><span>3</span><h3>On intervient</h3><p>Service rapide et garanti</p></div>
-                </div>
-            </section>
-               <footer className="contact-footer">
-                   <div className="footer-container">
-                       <div className="footer-column footer-about">
-     <Link to="/" className="navbar-logo">
-             <img src={logo} alt="Logo InfoServices" />
-             <span>InfoServices</span>
-           </Link>
-                                 <div className="social-links">
-                                   <a href="https://www.facebook.com/profile.php?id=100081083984402&sk=reels_tab" className="social facebook">f</a>
-                                   <a href="#" className="social twitter">X</a>
-                                   <a href="#" className="social linkedin">in</a>
-                               </div>
-                       </div>
-                       <div className="footer-column">
-                           <h3>Navigation</h3>
-                          <div className="footer-column">
-       <Link to="/">Accueil</Link>
-       <Link to="/services">Services</Link>
-       <Link to="/apropos">À propos</Link>
-       <Link to="/contact">Contact</Link>
-   </div>
-                       </div>
-                       <div className="footer-column">
-                           <h3>Nos services</h3>
-                           <a href="/services">Développement web</a>
-                           <a href="/services">Solutions informatiques</a>
-                           <a href="/services">Maintenance</a>
-                           <a href="/services">Conseil informatique</a>
-                       </div>
-                       <div className="footer-column">
-                           <h3>Contact</h3>
-                           <p>Bujumbura, Burundi</p>
-                           <p>alineniyomwungere99@gmail.com</p>
-                           <p>+257 62573421</p>
-                       </div>
-                   </div>
-                   <div className="footer-bottom">
-                       <p>© {new Date().getFullYear()} InfoServices. Tous droits réservés.</p>
-                   </div>
-               </footer>
+            <section className="section process-section"><h2>Comment ça marche ?</h2><div className="process-steps"><div className="step"><span>1</span><h3>Vous demandez</h3><p>Vous remplissez le formulaire</p></div><div className="step"><span>2</span><h3>Nous analysons</h3><p>Devis en 24h</p></div><div className="step"><span>3</span><h3>On intervient</h3><p>Service rapide et garanti</p></div></div></section>
+               <footer className="contact-footer"><div className="footer-container"><div className="footer-column footer-about"><Link to="/" className="navbar-logo"><img src={logo} alt="Logo InfoServices" /><span>InfoServices</span></Link><div className="social-links"><a href="https://www.facebook.com/profile.php?id=100081083984402&sk=reels_tab" className="social facebook">f</a><a href="#" className="social twitter">X</a><a href="#" className="social linkedin">in</a></div></div><div className="footer-column"><h3>Navigation</h3><div className="footer-column"><Link to="/">Accueil</Link><Link to="/services">Services</Link><Link to="/apropos">À propos</Link><Link to="/contact">Contact</Link></div></div><div className="footer-column"><h3>Nos services</h3><a href="/services">Développement web</a><a href="/services">Solutions informatiques</a><a href="/services">Maintenance</a><a href="/services">Conseil informatique</a></div><div className="footer-column"><h3>Contact</h3><p>Bujumbura, Burundi</p><p>alineniyomwungere99@gmail.com</p><p>+257 62573421</p></div></div><div className="footer-bottom"><p>© {new Date().getFullYear()} InfoServices. Tous droits réservés.</p></div></footer>
         </div>
     );
 }
