@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from "../assets/logo.png";
 import "./Devis.css";
 
-        {/* // 1. Dictionnaire d'images par défaut - à mettre en haut de ton fichier */}
+        // 1. Dictionnaire d'images par défaut - à mettre en haut de ton fichier */
 const defaultImages = {
   "Développement web": "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=800&auto=format&fit=crop",
   "Développement d applications": "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=800&auto=format&fit=crop",
