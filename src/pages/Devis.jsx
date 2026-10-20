@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from "../assets/logo.png";
 import "./Devis.css";
 
-        // 1. Dictionnaire d'images par défaut - à mettre en haut de ton fichier */
+//1. Dictionnaire d'images par défaut
 const defaultImages = {
   "Développement web": "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=800&auto=format&fit=crop",
   "Développement d applications": "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=800&auto=format&fit=crop",
@@ -15,8 +15,6 @@ const defaultImages = {
 };
 
 function Devis() {
-
-    // ANIMATION TEXTE QUI MONTE
 useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -26,7 +24,6 @@ useEffect(() => {
             }
         });
     }, { threshold: 0.15 });
-
     document.querySelectorAll('.hero-section, .services-section, .devis-form-section, .process-section')
         .forEach(el => observer.observe(el));
 }, []);
@@ -41,7 +38,6 @@ useEffect(() => {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
-    // EN LOCAL - pas Render
     const API_URL = "https://infoservices-backend-production.up.railway.app";
 
     useEffect(() => {
@@ -56,7 +52,6 @@ useEffect(() => {
             })
             .catch(() => {
                 console.log("Backend pas lancé, j'utilise des faux services");
-                // FAUX SERVICES pour tester ton design sans backend
                 setServices([
                     { id: 1, nom: "Dépannage Informatique", description: "Réparation PC, virus, lenteur." },
                     { id: 2, nom: "Création Site Web", description: "Site vitrine, e-commerce." },
@@ -71,29 +66,43 @@ useEffect(() => {
         setFormData({ ...formData, [name]: value });
     };
 
+    // CORRIGÉ ICI - service_id et bonne route
     const handleSubmit = async (e) => {
         e.preventDefault();
         setSuccess(""); setError(""); setLoading(true);
         try {
             const dataToSend = {
-                nom: formData.nom, prenom: formData.prenom,
-                email: formData.email, telephone: formData.telephone,
-                description: formData.description, urgence: formData.urgence,
+                nom: formData.nom,
+                prenom: formData.prenom,
+                email: formData.email,
+                telephone: formData.telephone,
+                description: formData.description,
+                urgence: formData.urgence,
                 budget: formData.budget ? Number(formData.budget) : null,
                 dateSouhaitee: formData.dateSouhaitee || null,
-                service: { id: Number(formData.service_id) }
+                service_id: Number(formData.service_id)
             };
-            const response = await fetch(`${API_URL}/api/devis`, {
+            
+            console.log("J'envoie:", dataToSend);
+
+            const response = await fetch(`${API_URL}/api/demandes_devis`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(dataToSend)
             });
-            if (!response.ok) throw new Error("Erreur envoi");
+
+            if (!response.ok) {
+                const txt = await response.text();
+                console.log("Erreur backend detail:", txt);
+                throw new Error(txt || "Erreur envoi");
+            }
+
             await response.json();
             setSuccess("Votre demande de devis a été envoyée avec succès !");
             setFormData({ nom: "", prenom: "", email: "", telephone: "", service_id: "", description: "", urgence: "Normale", budget: "", dateSouhaitee: "" });
         } catch (err) {
-            setError("Backend non lancé ! Lance ton Spring Boot sur le port 8080.");
+            console.error(err);
+            setError("Erreur: " + err.message);
         } finally {
             setLoading(false);
         }
@@ -108,10 +117,7 @@ useEffect(() => {
                 <a href="#devis-form" className="hero-btn">Demander un devis</a>
             </section>
 
-   
-{/* // 2. Ta section */}
 <section className="services-section">
-  {/* <h2>Nos Services Informatiques</h2> */}
   <div className="services-grid">
     {services.length > 0 ? services.map((s) => {
       const imgSrc = s.image ? `/uploads/${s.image}` : (defaultImages[s.nom] || defaultImages["Développement web"]);
@@ -130,8 +136,6 @@ useEffect(() => {
 </section>
 <section id="devis-form" className="devis-form-section">
   <div className="devis-wrapper">
-    
-    {/* COLONNE 1 - FORMULAIRE */}
     <div className="devis-container">
       <h2>Demander un devis</h2>
       {success && <div className="success-message">{success}</div>}
@@ -163,28 +167,20 @@ useEffect(() => {
         </button>
       </form>
     </div>
-
-    {/* COLONNE 2 - PHOTO + TEXTE */}
     <div className="devis-info">
       <div className="devis-image">
         <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=800&auto=format&fit=crop" alt="Devis informatique" />
       </div>
       <h3>Votre projet, notre priorité</h3>
-      <p>
-        Nous vous répondons en moins de 24h avec un devis détaillé et transparent. 
-        Que ce soit pour du développement web, de la maintenance ou l'installation réseau,
-        notre équipe vous accompagne de A à Z.
-      </p>
+      <p>Nous vous répondons en moins de 24h avec un devis détaillé et transparent.</p>
       <p>
         <strong>✓ Devis gratuit</strong> - Sans engagement<br/>
         <strong>✓ Réponse rapide</strong> - Sous 24 heures<br/>
         <strong>✓ Support local</strong> - Basé à Bujumbura
       </p>
     </div>
-
   </div>
 </section>
-
             <section className="section process-section">
                 <h2>Comment ça marche ?</h2>
                 <div className="process-steps">
@@ -193,135 +189,46 @@ useEffect(() => {
                     <div className="step"><span>3</span><h3>On intervient</h3><p>Service rapide et garanti</p></div>
                 </div>
             </section>
-
-   {/* =====================================================
-                   SECTION 3 : FOOTER
-               ====================================================== */}
                <footer className="contact-footer">
-   
                    <div className="footer-container">
-   
-                       {/* Logo / présentation */}
                        <div className="footer-column footer-about">
-   
      <Link to="/" className="navbar-logo">
              <img src={logo} alt="Logo InfoServices" />
              <span>InfoServices</span>
            </Link>
-                           {/* <h2>
-                               Info<span>Services</span>
-                           </h2> */}
-   
                                  <div className="social-links">
-   
-                                   <a
-                                       href="https://www.facebook.com/profile.php?id=100081083984402&sk=reels_tab"
-                                       className="social facebook"
-                                   >
-                                       f
-                                   </a>
-   
-                                   <a
-                                       href="#"
-                                       className="social twitter"
-                                   >
-                                       X
-                                   </a>
-   
-                                   <a
-                                       href="#"
-                                       className="social linkedin"
-                                   >
-                                       in
-                                   </a>
-   
+                                   <a href="https://www.facebook.com/profile.php?id=100081083984402&sk=reels_tab" className="social facebook">f</a>
+                                   <a href="#" className="social twitter">X</a>
+                                   <a href="#" className="social linkedin">in</a>
                                </div>
-   
                        </div>
-   
-   
-                       {/* Navigation */}
                        <div className="footer-column">
-   
-                           <h3>
-                               Navigation
-                           </h3>
-   
+                           <h3>Navigation</h3>
                           <div className="footer-column">
-    
        <Link to="/">Accueil</Link>
        <Link to="/services">Services</Link>
        <Link to="/apropos">À propos</Link>
        <Link to="/contact">Contact</Link>
    </div>
-   
                        </div>
-   
-   
-                       {/* Services */}
                        <div className="footer-column">
-   
-                           <h3>
-                               Nos services
-                           </h3>
-   
-                           <a href="/services">
-                               Développement web
-                           </a>
-   
-                           <a href="/services">
-                               Solutions informatiques
-                           </a>
-   
-                           <a href="/services">
-                               Maintenance
-                           </a>
-   
-                           <a href="/services">
-                               Conseil informatique
-                           </a>
-   
+                           <h3>Nos services</h3>
+                           <a href="/services">Développement web</a>
+                           <a href="/services">Solutions informatiques</a>
+                           <a href="/services">Maintenance</a>
+                           <a href="/services">Conseil informatique</a>
                        </div>
-   
-   
-                       {/* Contact */}
                        <div className="footer-column">
-   
-                           <h3>
-                               Contact
-                           </h3>
-   
-                           <p>
-                                Bujumbura, Burundi
-                           </p>
-   
-                           <p>
-                                alineniyomwungere99@gmail.com
-                           </p>
-   
-                           <p>
-                                +257 62573421
-                           </p>
-   
+                           <h3>Contact</h3>
+                           <p>Bujumbura, Burundi</p>
+                           <p>alineniyomwungere99@gmail.com</p>
+                           <p>+257 62573421</p>
                        </div>
-   
                    </div>
-   
-   
-                   {/* Bas du footer */}
                    <div className="footer-bottom">
-   
-                       <p>
-                           © {new Date().getFullYear()} InfoServices.
-                           Tous droits réservés.
-                       </p>
-   
-                   
-   
+                       <p>© {new Date().getFullYear()} InfoServices. Tous droits réservés.</p>
                    </div>
-   
                </footer>
-   
         </div>
     );
 }
