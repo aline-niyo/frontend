@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import logo from "../assets/logo.png";
-import "./Devis.css";
+import "./demandes_devis.css";
 
 const defaultImages = {
   "Développement web": "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=800&auto=format&fit=crop",
