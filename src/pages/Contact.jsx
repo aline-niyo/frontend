@@ -48,7 +48,7 @@ function Contact() {
 
         try {
             const response = await fetch(
-                "https://infoservices-backend-2-8fuq.onrender.com/contact",
+                "https://infoservices-backend-2-8fuq.onrender.com/api/contact",
                 {
                     method: "POST",
                     headers: {
