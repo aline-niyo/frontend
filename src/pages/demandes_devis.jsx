@@ -40,71 +40,75 @@ useEffect(() => {
     const API_URL = "https://infoservices-backend-2-8fuq.onrender.com";
 
     useEffect(() => {
-        fetch(`${API_URL}/api/services`)
-            .then((res) => {
-                if (!res.ok) throw new Error("Erreur services");
-                return res.json();
-            })
-            .then((data) => {
-                setServices(data);
-            })
-            .catch(() => {
-                setServices([
-                    { id: 1, nom: "Dépannage Informatique", description: "Réparation PC, virus, lenteur." },
-                    { id: 2, nom: "Création Site Web", description: "Site vitrine, e-commerce." },
-                    { id: 3, nom: "Réseau & Wifi", description: "Installation réseau, routeur." },
-                    { id: 4, nom: "Maintenance", description: "Contrat de maintenance." }
-                ]);
-            });
+        let retries = 0;
+        const fetchServices = () => {
+            fetch(`${API_URL}/api/services`)
+                .then((res) => {
+                    if (!res.ok) throw new Error("Erreur services");
+                    return res.json();
+                })
+                .then((data) => {
+                    setServices(data);
+                })
+                .catch(() => {
+                    if (retries < 3) {
+                        retries++;
+                        console.log(`Tentative ${retries}/3 - serveur se réveille...`);
+                        setTimeout(fetchServices, 20000);
+                    } else {
+                        setServices([
+                            { id: 1, nom: "Dépannage Informatique", description: "Réparation PC, virus, lenteur." },
+                            { id: 2, nom: "Création Site Web", description: "Site vitrine, e-commerce." },
+                        ]);
+                    }
+                });
+        };
+        fetchServices();
     }, []);
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setSuccess(""); setError(""); setLoading(true);
-        try {
-            // TON BACKEND VEUT service: {id} et pas service_id
-            const dataToSend = {
-                nom: formData.nom,
-                prenom: formData.prenom,
-                email: formData.email,
-                telephone: formData.telephone,
-                description: formData.description,
-                urgence: formData.urgence,
-                budget: formData.budget ? Number(formData.budget) : null,
-                dateSouhaitee: formData.dateSouhaitee || null,
-                service: { id: Number(formData.service_id) }
-            };
 
-            console.log("Envoi vers /api/devis:", dataToSend);
+        const sendDevis = async (retry = 0) => {
+            try {
+                const dataToSend = {
+                    nom: formData.nom,
+                    prenom: formData.prenom,
+                    email: formData.email,
+                    telephone: formData.telephone,
+                    description: formData.description,
+                    urgence: formData.urgence,
+                    budget: formData.budget ? Number(formData.budget) : null,
+                    dateSouhaitee: formData.dateSouhaitee || null,
+                    service: { id: Number(formData.service_id) }
+                };
 
-            const response = await fetch(`${API_URL}/api/devis`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(dataToSend)
-            });
+                const response = await fetch(`${API_URL}/api/devis`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(dataToSend)
+                });
 
-            const text = await response.text();
-            console.log("Réponse backend:", response.status, text);
+                const text = await response.text();
+                if (!response.ok) throw new Error(text || `Erreur ${response.status}`);
 
-            if (!response.ok) {
-                throw new Error(text || `Erreur ${response.status}`);
+                setSuccess("Votre demande de devis a été envoyée avec succès !");
+                setFormData({ nom: "", prenom: "", email: "", telephone: "", service_id: "", description: "", urgence: "Normale", budget: "", dateSouhaitee: "" });
+                setLoading(false);
+            } catch (err) {
+                if (retry < 2) {
+                    setError(`Serveur se réveille... tentative ${retry+1}/3, on réessaie dans 15s`);
+                    setTimeout(() => sendDevis(retry+1), 15000);
+                } else {
+                    setError("Erreur: " + err.message);
+                    setLoading(false);
+                }
             }
-
-            setSuccess("Votre demande de devis a été envoyée avec succès !");
-            setFormData({ nom: "", prenom: "", email: "", telephone: "", service_id: "", description: "", urgence: "Normale", budget: "", dateSouhaitee: "" });
-        } catch (err) {
-            console.error(err);
-            setError("Erreur: " + err.message);
-        } finally {
-            setLoading(false);
-        }
+        };
+        await sendDevis();
     };
-
+    
     return (
         <div className="devis-page">
             <section className="section hero-section">
