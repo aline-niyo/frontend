@@ -39,24 +39,49 @@ function Contact() {
         });
     };
 
-    const handleSubmit = async (e) => {
+       const handleSubmit = async (e) => {
         e.preventDefault();
-
         setSuccess("");
         setError("");
         setLoading(true);
 
-        try {
-            const response = await fetch(
-                "https://infoservices-backend-2-8fuq.onrender.com/api/contact",
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(formData)
+        const sendContact = async (retry = 0) => {
+            try {
+                const response = await fetch(
+                    "https://infoservices-backend-2-8fuq.onrender.com/api/contact",
+                    {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(formData)
+                    }
+                );
+
+                const responseText = await response.text();
+                console.log("Statut HTTP :", response.status, "Réponse:", responseText);
+
+                if (!response.ok) {
+                    throw new Error(`Erreur serveur ${response.status} : ${responseText}`);
                 }
-            );
+
+                const data = JSON.parse(responseText);
+                console.log("Message enregistré :", data);
+                setSuccess("Votre message a été envoyé avec succès !");
+                setFormData({ nom: "", email: "", telephone: "", sujet: "", message: "" });
+                setLoading(false);
+            } catch (err) {
+                console.error("Erreur complète :", err);
+                if (retry < 2) {
+                    setError(`Serveur se réveille... tentative ${retry+1}/3, on réessaie dans 15s`);
+                    setTimeout(() => sendContact(retry+1), 15000);
+                } else {
+                    setError("Le serveur met du temps à démarrer, réessayez dans 30 sec: " + err.message);
+                    setLoading(false);
+                }
+            }
+        };
+
+        await sendContact();
+    };
 
             const responseText = await response.text();
 
@@ -311,7 +336,7 @@ function Contact() {
 
                                 <a
                                     href="#"
-                                    className="social linkedin"
+                                    className="https://www.linkedin.com/"
                                 >
                                     in
                                 </a>
@@ -363,7 +388,7 @@ function Contact() {
 
                                 <a
                                     href="#"
-                                    className="social linkedin"
+                                    className="https://www.linkedin.com/"
                                 >
                                     in
                                 </a>
