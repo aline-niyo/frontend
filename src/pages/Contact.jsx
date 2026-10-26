@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import logo from "../assets/logo.png";
+
 import "./Contact.css";
 
 function Contact() {
@@ -18,101 +19,444 @@ function Contact() {
     }, []);
     
     const [formData, setFormData] = useState({
-        nom: "", email: "", telephone: "", sujet: "", message: ""
+        nom: "",
+        email: "",
+        telephone: "",
+        sujet: "",
+        message: ""
     });
+
     const [success, setSuccess] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+
+        setFormData({
+            ...formData,
+            [name]: value
+        });
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         setSuccess("");
         setError("");
         setLoading(true);
 
-        const sendContact = async (retry = 0) => {
-            try {
-                const response = await fetch(
-                    "https://infoservices-backend-2-8fuq.onrender.com/api/contact",
-                    {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify(formData)
-                    }
-                );
-                const responseText = await response.text();
-                if (!response.ok) throw new Error(`Erreur ${response.status} : ${responseText}`);
-                setSuccess("Votre message a été envoyé avec succès !");
-                setFormData({ nom: "", email: "", telephone: "", sujet: "", message: "" });
-                setLoading(false);
-            } catch (err) {
-                if (retry < 2) {
-                    setError(`Serveur se réveille... tentative ${retry+1}/3, on réessaie dans 15s`);
-                    setTimeout(() => sendContact(retry+1), 15000);
-                } else {
-                    setError("Le serveur met du temps: " + err.message);
-                    setLoading(false);
+        try {
+            const response = await fetch(
+                "https://infoservices-backend-2-8fuq.onrender.com/api/contact",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(formData)
                 }
+            );
+
+            const responseText = await response.text();
+
+            console.log("Statut HTTP :", response.status);
+            console.log("Réponse du serveur :", responseText);
+
+            if (!response.ok) {
+                throw new Error(
+                    `Erreur serveur ${response.status} : ${responseText}`
+                );
             }
-        };
-        await sendContact();
+
+            const data = JSON.parse(responseText);
+
+            console.log("Message enregistré :", data);
+
+            setSuccess("Votre message a été envoyé avec succès !");
+
+            setFormData({
+                nom: "",
+                email: "",
+                telephone: "",
+                sujet: "",
+                message: ""
+            });
+
+        } catch (error) {
+            console.error("Erreur complète :", error);
+            setError(error.message);
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
         <div className="contact-page">
+
+            {/* =====================================================
+                SECTION 1 : HEADER
+            ====================================================== */}
             <section className="contact-hero">
+
                 <div className="contact-hero-content">
-                    <h1>Contactez-nous</h1>
-                    <p>Une question, un projet ou un besoin informatique ? Notre équipe est à votre disposition.</p>
-                    <a href="#contact-section" className="hero-button">Nous contacter</a>
+
+                    <h1>
+                        Contactez-nous
+                    </h1>
+
+                    <p>
+                        Une question, un projet ou un besoin informatique ?
+                        Notre équipe est à votre disposition pour vous
+                        accompagner.
+                    </p>
+
+                    <a href="#contact-section" className="hero-button">
+                        Nous contacter
+                    </a>
+
                 </div>
+
             </section>
-            <section className="contact-section" id="contact-section">
+
+
+            {/* =====================================================
+                SECTION 2 : FORMULAIRE + INFORMATIONS
+            ====================================================== */}
+            <section
+                className="contact-section"
+                id="contact-section"
+            >
+
                 <div className="contact-wrapper">
+
+                    {/* ---------------- FORMULAIRE ---------------- */}
                     <div className="contact-form-container">
-                        <span className="section-label">ÉCRIVEZ-NOUS</span>
-                        <p className="form-description">Remplissez le formulaire ci-dessous et nous vous répondrons dans les meilleurs délais.</p>
-                        {success && <div className="success-message">{success}</div>}
-                        {error && <div className="error-message">{error}</div>}
+
+                        <span className="section-label">
+                            ÉCRIVEZ-NOUS
+                        </span>
+
+                        
+
+                        <p className="form-description">
+                            Remplissez le formulaire ci-dessous et
+                            nous vous répondrons dans les meilleurs délais.
+                        </p>
+
+                        {success && (
+                            <div className="success-message">
+                                {success}
+                            </div>
+                        )}
+
+                        {error && (
+                            <div className="error-message">
+                                {error}
+                            </div>
+                        )}
+
                         <form onSubmit={handleSubmit}>
-                            <div className="form-row">
-                                <div className="form-group"><label>Nom :</label><input type="text" name="nom" value={formData.nom} onChange={handleChange} required /></div>
-                                <div className="form-group"><label>Email :</label><input type="email" name="email" value={formData.email} onChange={handleChange} required /></div>
-                            </div>
-                            <div className="form-row">
-                                <div className="form-group"><label>Téléphone :</label><input type="tel" name="telephone" value={formData.telephone} onChange={handleChange} /></div>
-                                <div className="form-group"><label>Sujet :</label><input type="text" name="sujet" value={formData.sujet} onChange={handleChange} required /></div>
-                            </div>
-                            <div className="form-group full"><label>Message :</label><textarea name="message" value={formData.message} onChange={handleChange} rows="6" required></textarea></div>
-                            <button type="submit" className="contact-button" disabled={loading}>{loading ? "Envoi en cours..." : "Envoyer le message"}</button>
-                        </form>
+
+  <div className="form-row">
+    <div className="form-group">
+      <label htmlFor="nom">Nom :</label>
+      <input
+        id="nom"
+        type="text"
+        name="nom"
+        value={formData.nom}
+        onChange={handleChange}
+        placeholder="Votre nom"
+        required
+      />
+    </div>
+
+    <div className="form-group">
+      <label htmlFor="email">Email :</label>
+      <input
+        id="email"
+        type="email"
+        name="email"
+        value={formData.email}
+        onChange={handleChange}
+        placeholder="exemple@email.com"
+        required
+      />
+    </div>
+  </div>
+
+  <div className="form-row">
+    <div className="form-group">
+      <label htmlFor="telephone">Téléphone :</label>
+      <input
+        id="telephone"
+        type="tel"
+        name="telephone"
+        value={formData.telephone}
+        onChange={handleChange}
+        placeholder="+257 XX XX XX XX"
+      />
+    </div>
+
+    <div className="form-group">
+      <label htmlFor="sujet">Sujet :</label>
+      <input
+        id="sujet"
+        type="text"
+        name="sujet"
+        value={formData.sujet}
+        onChange={handleChange}
+        placeholder="Sujet de votre message"
+        required
+      />
+    </div>
+  </div>
+
+  <div className="form-group full">
+    <label htmlFor="message">Message :</label>
+    <textarea
+      id="message"
+      name="message"
+      value={formData.message}
+      onChange={handleChange}
+      placeholder="Écrivez votre message..."
+      rows="6"
+      required
+    ></textarea>
+  </div>
+
+  <button type="submit" className="contact-button" disabled={loading}>
+    {loading ? "Envoi en cours..." : "Envoyer le message"}
+  </button>
+
+</form>
+
                     </div>
+
+
+                    {/* ---------------- INFORMATIONS ---------------- */}
                     <div className="contact-info">
-                        <span className="section-label">NOS COORDONNÉES</span>
-                        <h2>Contactez-nous</h2>
-                        <div className="contact-info-item"><p>Excellence House<br/>3ème étage</p></div>
-                        <div className="contact-info-item"><p>alineniyomwungere99@gmail.com</p></div>
-                        <div className="contact-info-item"><p>+257 62573421</p></div>
+
+                        <span className="section-label">
+                            NOS COORDONNÉES
+                        </span>
+
+                        <h2>
+                            Contactez-nous
+                        </h2>
+
+                        <p className="contact-info-description">
+                            Vous pouvez également nous contacter
+                            directement grâce aux informations
+                            ci-dessous.
+                        </p>
+
+
+                        {/* Adresse */}
+<div className="contact-info-item">
+    <div className="contact-icon">
+        <i className="fa-solid fa-location-dot"></i>
+    </div>
+    <div>
+        <p>
+            Excellence House<br />
+            3ème étage
+        </p>
+    </div>
+</div>
+
+{/* Email */}
+<div className="contact-info-item">
+    <div className="contact-icon">
+        <i className="fa-solid fa-envelope"></i>
+    </div>
+    <div>
+        <p>alineniyomwungere99@gmail.com</p>
+    </div>
+</div>
+
+{/* Téléphone */}
+<div className="contact-info-item">
+    <div className="contact-icon">
+        <i className="fa-solid fa-phone"></i>
+    </div>
+    <div>
+        <p>+257 62573421</p>
+    </div>
+</div>
+
+                        {/* Réseaux sociaux */}
+                        <div className="social-section">
+
+                            <h3>
+                                Nos Reseaux sociaux
+                            </h3>
+
+                            <div className="social-links">
+
+                                <a
+                                    href="https://www.facebook.com/profile.php?id=100081083984402&sk=reels_tab"
+                                    className="social facebook"
+                                >
+                                    f
+                                </a>
+
+                                <a
+                                    href="#"
+                                    className="social twitter"
+                                >
+                                    X
+                                </a>
+
+                                <a
+                                    href="#"
+                                    className="https://www.linkedin.com/"
+                                >
+                                    in
+                                </a>
+
+                            </div>
+
+                        </div>
+
                     </div>
+
                 </div>
+
             </section>
+
+
+            {/* =====================================================
+                SECTION 3 : FOOTER
+            ====================================================== */}
             <footer className="contact-footer">
+
                 <div className="footer-container">
+
+                    {/* Logo / présentation */}
                     <div className="footer-column footer-about">
-                        <Link to="/" className="navbar-logo"><img src={logo} alt="Logo InfoServices" /><span>InfoServices</span></Link>
+
+  <Link to="/" className="navbar-logo">
+          <img src={logo} alt="Logo InfoServices" />
+          <span>InfoServices</span>
+        </Link>
+                        {/* <h2>
+                            Info<span>Services</span>
+                        </h2> */}
+
+                              <div className="social-links">
+
+                                <a
+                                    href="https://www.facebook.com/profile.php?id=100081083984402&sk=reels_tab"
+                                    className="social facebook"
+                                >
+                                    f
+                                </a>
+
+                                <a
+                                    href="#"
+                                    className="social twitter"
+                                >
+                                    X
+                                </a>
+
+                                <a
+                                    href="#"
+                                    className="https://www.linkedin.com/"
+                                >
+                                    in
+                                </a>
+
+                            </div>
+
                     </div>
-                    <div className="footer-column"><h3>Navigation</h3><Link to="/">Accueil</Link><Link to="/services">Services</Link><Link to="/apropos">À propos</Link><Link to="/contact">Contact</Link></div>
-                    <div className="footer-column"><h3>Nos services</h3><a href="/services">Développement web</a><a href="/services">Solutions informatiques</a><a href="/services">Maintenance</a><a href="/services">Conseil informatique</a></div>
-                    <div className="footer-column"><h3>Contact</h3><p>Bujumbura, Burundi</p><p>alineniyomwungere99@gmail.com</p><p>+257 62573421</p></div>
+
+
+                    {/* Navigation */}
+                    <div className="footer-column">
+
+                        <h3>
+                            Navigation
+                        </h3>
+
+                       <div className="footer-column">
+ 
+    <Link to="/">Accueil</Link>
+    <Link to="/services">Services</Link>
+    <Link to="/apropos">À propos</Link>
+    <Link to="/contact">Contact</Link>
+</div>
+
+                    </div>
+
+
+                    {/* Services */}
+                    <div className="footer-column">
+
+                        <h3>
+                            Nos services
+                        </h3>
+
+                        <a href="/services">
+                            Développement web
+                        </a>
+
+                        <a href="/services">
+                            Solutions informatiques
+                        </a>
+
+                        <a href="/services">
+                            Maintenance
+                        </a>
+
+                        <a href="/services">
+                            Conseil informatique
+                        </a>
+
+                    </div>
+
+
+                    {/* Contact */}
+                    <div className="footer-column">
+
+                        <h3>
+                            Contact
+                        </h3>
+
+                        <p>
+                             Bujumbura, Burundi
+                        </p>
+
+                        <p>
+                             alineniyomwungere99@gmail.com
+                        </p>
+
+                        <p>
+                             +257 62573421
+                        </p>
+
+                    </div>
+
                 </div>
-                <div className="footer-bottom"><p>© {new Date().getFullYear()} InfoServices. Tous droits réservés.</p></div>
+
+
+                {/* Bas du footer */}
+                <div className="footer-bottom">
+
+                    <p>
+                        © {new Date().getFullYear()} InfoServices.
+                        Tous droits réservés.
+                    </p>
+
+                
+
+                </div>
+
             </footer>
+
         </div>
     );
 }
+
 export default Contact;

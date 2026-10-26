@@ -45,30 +45,12 @@ function Services() {
     const [error, setError] = useState("");
 
     useEffect(() => {
-    let retries = 0;
-    const fetchServices = () => {
-        fetch("https://infoservices-backend-2-8fuq.onrender.com/api/services")
-            .then((res) => { 
-                if (!res.ok) throw new Error(); 
-                return res.json(); 
-            })
-            .then((data) => { 
-                setServices(data); 
-                setLoading(false); 
-            })
-            .catch(() => {
-                if (retries < 3) {
-                    retries++;
-                    setError(`Le serveur se réveille... tentative ${retries}/3 (attendez 20s)`);
-                    setTimeout(fetchServices, 20000); // réessaie après 20 sec
-                } else {
-                    setError("Le serveur met du temps à démarrer, actualisez dans 30 sec");
-                    setLoading(false);
-                }
-            });
-    };
-    fetchServices();
-}, []);
+        fetch("https://infoservices-backend-2-8fuq.onrender.com/services")
+            .then((res) => { if (!res.ok) throw new Error(); return res.json(); })
+            .then((data) => { setServices(data); setLoading(false); })
+            .catch(() => { setError("Impossible de récupérer les services."); setLoading(false); });
+    }, []);
+
     return (
         <div className="services-page">
             
@@ -95,7 +77,7 @@ function Services() {
           <span className="prix">{Number(s.prix).toLocaleString()} FBU</span>
         </div>
       )
-    }) : <p className="loading">Chargement... {error && <span> - {error}</span>}</p>}
+    }) : <p className="loading">Chargement...</p>}
   </div>
 </section>
 
