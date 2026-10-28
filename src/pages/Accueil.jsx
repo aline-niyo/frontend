@@ -574,7 +574,7 @@ function Accueil() {
             Comment nous travaillons
           </h2>
 
-          <p>
+          <p className="centrer">
             Une méthode simple et transparente pour
             transformer votre idée en solution concrète.
           </p>
