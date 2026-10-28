@@ -794,116 +794,146 @@
    Couleur : BLANC
 ========================================================= */
 
-.solutions-section {
-    padding: 50px 8%;
-
-    background: #cfd9e7;
+.hebergement-section {
+  padding: 20px 10px;
+  background: #f8f9ff;
+  text-align: center;
 }
 
-.section-heading {
-    text-align: center;
-
-    max-width: 750px;
-
-    margin: 0 auto 50px;
+.hebergement-section h2 {
+  font-family: 'Times New Roman', serif;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #111;
 }
 
-.section-heading h2 {
-    font-size: 25px;
-    color: #071d35;
-    margin: 12px 0 15px;
+.hebergement-subtitle {
+  color: #555;
+  margin-bottom: 50px;
+  font-size: 17px;
 }
 
-.section-heading h2 span {
-    color: #00bde8;
+.hebergement-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 850px;
+  margin: 0 auto;
 }
 
-.section-heading p {
-    color: #141515;
- font-size: 18px;
-    line-height: 1.5;
+.hebergement-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #eee;
+  transition: transform 0.3s;
 }
 
-.solutions-grid {
-    max-width: 1200px;
-
-    margin: 0 auto;
-
-    display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
-
-    gap: 22px;
+.hebergement-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 
-.solution-card {
-    background: #f7fbff;
-
-    border: 1px solid #e2edf5;
-
-    border-radius: 16px;
-
-    padding: 30px 25px;
-
-    transition: 0.3s;
+.hebergement-header {
+  padding: 5px;
+  background: white;
 }
 
-.solution-card:hover {
-    transform: translateY(-8px);
-
-    box-shadow:
-        0 15px 35px rgba(0, 80, 120, 0.12);
-
-    border-color: #00bde8;
+.hebergement-header h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111;
 }
 
-.solution-icon {
-    width: 60px;
-    height: 60px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 14px;
-
-    background: #e3f8ff;
-
-    font-size: 28px;
-
-    margin-bottom: 20px;
+.hebergement-prix {
+  padding: 12px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 5px;
 }
 
-.solution-card h3 {
-    color: #071d35;
-
-    font-size: 20px;
-
-    margin-bottom: 12px;
+.prix-nombre {
+  font-size: 30px;
+  font-weight: 200;
+  letter-spacing: 1px;
 }
 
-.solution-card p {
-    color: #657789;
-
-    line-height: 1.7;
-
-    margin-bottom: 20px;
+.prix-unite {
+  font-size: 16px;
+  font-weight: 400;
 }
 
-.solution-card a {
-    color: #00a9d6;
-
-    text-decoration: none;
-
-    font-weight: 700;
+.hebergement-features {
+  /* padding: 10px 15px 10px 15px; */
+  text-align: left;
+  flex: 1;
+  background: white;
 }
 
-.solution-card a:hover {
-    color: #061a33;
+.hebergement-features p {
+  margin: 14px 0;
+  color: #777;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
+.check {
+  font-weight: bold;
+  color: #000;
+  font-size: 16px;
+}
 
+.hebergement-footer {
+  padding: 18px 20px 25px 20px;
+  background: #f5f5f5;
+  margin-top: auto;
+}
+
+.hebergement-btn {
+  display: inline-block;
+  padding: 11px 11px;
+  border-radius: 30px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  width: 100%;
+  transition: 0.3s;
+}
+
+.hebergement-btn:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+.hebergement-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  border: 2px solid #000; /* encadrement noir */
+}
+/* Responsive */
+@media (max-width: 1000px) {
+  .hebergement-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .hebergement-grid {
+    grid-template-columns: 1fr;
+  }
+  .hebergement-section h2 {
+    font-size: 30px;
+  }
+}
 /* =========================================================
   nos clients
 ========================================================= */

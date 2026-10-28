@@ -21,6 +21,8 @@ import logo6 from "../assets/logos/pamac.png";
 import logo from "../assets/logo.png";
 
 
+
+
 function Accueil() {
   useEffect(() => {
   const observer = new IntersectionObserver((entries) => {
@@ -121,6 +123,45 @@ function Accueil() {
         </svg>
       ),
     },
+  ];
+
+  const plans = [
+    {
+      nom: "Basique",
+      prix: "100 000",
+      couleur: "#1e2a5a",
+      features: ["1 Go de stockage (SSD)", "1 Site", "1 Base de données", "1 Domaine", "3 courriels"]
+    },
+    {
+      nom: "Standard",
+      prix: "150 000",
+      couleur: "#149e8e",
+      features: ["2 Go de stockage (SSD)", "1 Site", "1 Base de données", "1 Domaine", "5 e-mails"]
+    },
+    {
+      nom: "Intermédiaire",
+      prix: "250 000",
+      couleur: "#f58220",
+      features: ["5 Go de stockage (SSD)", "2 sites", "2 bases de données", "2 Domaines", "10 courriels"]
+    },
+    {
+      nom: "Avancé",
+      prix: "350 000",
+      couleur: "#7c3aed",
+      features: ["10 Go de stockage (SSD)", "2 sites", "2 bases de données", "2 Domaines", "20 courriels"]
+    },
+    {
+      nom: "Professionnel",
+      prix: "450 000",
+      couleur: "#e11d48",
+      features: ["20 Go de stockage (SSD)", "3 sites", "3 bases de données", "5 domaines", "50 courriels"]
+    },
+    {
+      nom: "VIP",
+      prix: "600 000",
+      couleur: "#22c55e",
+      features: ["50 Go de stockage (SSD)", "5 sites", "5 bases de données", "5 domaines", "Courriels illimités"]
+    }
   ];
 
   return (
@@ -461,121 +502,33 @@ function Accueil() {
           2. NOS SOLUTIONS
       ===================================================== */}
 
-      <section className="solutions-section">
-
-        <div className="section-heading">
-
-          <h2>NOS SOLUTIONS</h2>
-      
-          <h2>
-            Des solutions adaptées à
-            vos besoins
-          </h2>
-          <p class="text-4xl font-bold leading-tight">
-Découvrez nos principales solutions digitales pour développer votre activité.\
- De la création de sites web et d'applications performantes au 
- référencement et au marketing digital, nous mettons la technologie au service de 
- votre croissance.
-</p>
-        </div>
-
-
-        <div className="solutions-grid">
-
-          <div className="solution-card">
-
-            <div className="solution-icon">
-              💻
+      <section className="hebergement-section">
+      <h2>Plans D'hébergement</h2>
+      <p className="hebergement-subtitle">Des solutions d'hébergement abordables pour tous types de projets.</p>
+      <div className="hebergement-grid">
+        {plans.map((plan, index) => (
+          <div key={index} className="hebergement-card">
+            <div className="hebergement-header">
+              <h3>{plan.nom}</h3>
             </div>
-
-            <h3>
-              Développement Web
-            </h3>
-
-            <p>
-              Création de sites web modernes,
-              rapides, sécurisés et adaptés
-              aux besoins de votre entreprise.
-            </p>
-
-            <Link to="/services" className="solution-btn1">
-              Découvrir →
-            </Link>
-
-          </div>
-
-
-          <div className="solution-card">
-
-            <div className="solution-icon">
-              📱
+            <div className="hebergement-prix" style={{ backgroundColor: plan.couleur }}>
+              <span className="prix-nombre">{plan.prix}</span>
+              <span className="prix-unite">Fbu /an</span>
             </div>
-
-            <h3>
-              Solutions digitales
-            </h3>
-
-            <p>
-              Conception de solutions numériques
-              permettant d'améliorer votre organisation
-              et vos activités.
-            </p>
-
-            <Link to="/services" className="solution-btn2">
-              Découvrir →
-            </Link>
-
-          </div>
-
-
-          <div className="solution-card">
-
-            <div className="solution-icon" >
-              🛡️
+            <div className="hebergement-features">
+              {plan.features.map((f, i) => (
+                <p key={i}><span className="check">✔</span> {f}</p>
+              ))}
             </div>
-
-            <h3>
-              Sécurité informatique
-            </h3>
-
-            <p>
-              Protection de vos données, systèmes
-              et infrastructures informatiques.
-            </p>
-
-            <Link to="/services" className="solution-btn">
-              Découvrir →
-            </Link>
-
-          </div>
-
-
-          <div className="solution-card">
-
-            <div className="solution-icon">
-              ⚙️
+            <div className="hebergement-footer">
+              <a href="/devis" className="hebergement-btn" style={{ backgroundColor: plan.couleur }}>
+                Commandez maintenant 🛒
+              </a>
             </div>
-
-            <h3>
-              Maintenance
-            </h3>
-
-            <p>
-              Assistance et maintenance pour assurer
-              le bon fonctionnement de vos équipements
-              et systèmes.
-            </p>
-
-            <Link to="/services" className="solution-btn4">
-  Découvrir →
-</Link>
-
           </div>
-
-        </div>
-
-      </section>
-
+        ))}
+      </div>
+    </section>
 
       {/* =====================================================
           3. nos clients
