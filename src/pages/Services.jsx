@@ -16,11 +16,11 @@ import logo from "../assets/logo.png";
 
 const defaultImages = {
   "Développement Site Web Vitrine": "https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&h=400&fit=crop",
-  "Développement Application E-commerce": "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=600&h=400&fit=crop",
+  "Développement Application E-commerce": "https://images.unsplash.com/photo-1556740772-1a741367b93e?w=600&h=400&fit=crop",
   "Développement Application Mobile": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop",
   "Installation Réseau Entreprise": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop",
-  "Maintenance Informatique Annuelle": "https://images.unsplash.com/photo-1581092918056-0c4c3b09f02d?w=600&h=400&fit=crop",
-  "Cybersécurité & Protection Données": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop",
+  "Maintenance Informatique Annuelle": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop",
+  "Cybersécurité & Protection Données": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&h=400&fit=crop",
   "Formation Informatique": "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&h=400&fit=crop",
   "Conseil & Transformation Digitale": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
 };
