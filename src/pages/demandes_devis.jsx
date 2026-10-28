@@ -37,7 +37,7 @@ useEffect(() => {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
-    const API_URL = "https://infoservices-backend-2-8fuq.onrender.com/api";
+    const API_URL = "https://infoservices-backend-2-8fuq.onrender.com";
 
     useEffect(() => {
         fetch(`${API_URL}/api/services`)
