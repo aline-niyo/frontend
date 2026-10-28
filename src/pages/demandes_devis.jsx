@@ -4,15 +4,15 @@ import logo from "../assets/logo.png";
 import "./demandes_devis.css";
 
 const defaultImages = {
-  "Développement web": "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=800&auto=format&fit=crop",
-  "Développement d applications": "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=800&auto=format&fit=crop",
-  "Maintenance informatique": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800&auto=format&fit=crop",
-  "Installation de logiciels": "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop",
-  "Réseaux informatiques": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop",
-  "Bases de données": "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?q=80&w=800&auto=format&fit=crop",
-  "Sécurité informatique": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop",
+  "Développement Site Web Vitrine": "https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&h=400&fit=crop",
+  "Développement Application E-commerce": "https://images.unsplash.com/photo-1556740772-1a741367b93e?w=600&h=400&fit=crop",
+  "Développement Application Mobile": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop",
+  "Installation Réseau Entreprise": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop",
+  "Maintenance Informatique Annuelle": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop",
+  "Cybersécurité & Protection Données": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&h=400&fit=crop",
+  "Formation Informatique": "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&h=400&fit=crop",
+  "Conseil & Transformation Digitale": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
 };
-
 function Devis() {
 useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
