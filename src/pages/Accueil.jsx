@@ -18,17 +18,20 @@ import logo from "../assets/logo.png";
 
 
 function Accueil() {
-  useEffect(() => {
+useEffect(() => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('in-view');
-        observer.unobserve(entry.target); // on fige après
+        observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.15 });
-  document.querySelectorAll('.hero-section, .services-hero, .services-section, .hebergement-section, .happy-clients, .tech-stack-section, .services-cta, .process-section, .about-home-section')
-    .forEach(el => observer.observe(el));
+
+  const elements = document.querySelectorAll('.hero-section, .stats-section, .hebergement-section, .happy-clients, .process-section, .about-home-section, .contact-footer');
+  elements.forEach(el => observer.observe(el));
+
+  return () => observer.disconnect();
 }, []);
   
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
