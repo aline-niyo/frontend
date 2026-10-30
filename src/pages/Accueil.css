@@ -1795,3 +1795,36 @@
 .in-view .section-button,
 .in-view .stat-label { animation: textUp 0.6s ease-out 0.3s forwards; }
 /* .in-view .footer-column h3 { animation: textUp 0.6s ease-out 0.3s forwards; } */
+
+/* =========================================================
+   HEBERGEMENT - PETIT BOUGEMENT
+========================================================= */
+
+/* état de départ */
+.hebergement-section h2,
+.hebergement-section .hebergement-subtitle,
+.hebergement-card {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* quand la section est vue */
+.hebergement-section.in-view h2 {
+  animation: textUp 0.6s ease-out forwards;
+}
+
+.hebergement-section.in-view .hebergement-subtitle {
+  animation: textUp 0.6s ease-out 0.15s forwards;
+}
+
+.hebergement-section.in-view .hebergement-card {
+  animation: textUp 0.6s ease-out forwards;
+}
+
+/* chaque carte monte avec un petit décalage */
+.hebergement-section.in-view .hebergement-card:nth-child(1) { animation-delay: 0.1s; }
+.hebergement-section.in-view .hebergement-card:nth-child(2) { animation-delay: 0.2s; }
+.hebergement-section.in-view .hebergement-card:nth-child(3) { animation-delay: 0.3s; }
+.hebergement-section.in-view .hebergement-card:nth-child(4) { animation-delay: 0.4s; }
+.hebergement-section.in-view .hebergement-card:nth-child(5) { animation-delay: 0.5s; }
+.hebergement-section.in-view .hebergement-card:nth-child(6) { animation-delay: 0.6s; }

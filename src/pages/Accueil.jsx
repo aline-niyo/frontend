@@ -27,7 +27,7 @@ function Accueil() {
       }
     });
   }, { threshold: 0.15 });
-  document.querySelectorAll('.hero-section, .trust-bar, .stats-section, .about-home-section, .solutions-section, .happy-clients, .process-section')
+  document.querySelectorAll('.hero-section, .services-hero, .services-section, .hebergement-section, .happy-clients, .tech-stack-section, .services-cta, .process-section, .about-home-section')
     .forEach(el => observer.observe(el));
 }, []);
   
