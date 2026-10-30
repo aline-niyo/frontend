@@ -27,7 +27,6 @@ body {
     color: #f4f5f7;
 }
 
-
 /* =========================================================
    SECTION 1 : HERO
 ========================================================= */
@@ -461,71 +460,40 @@ body {
    SOCIAL MEDIA
 ========================================================= */
 
-.social-section {
-
-    margin-top: 45px;
-}
-
-.social-section h3 {
-
-    font-family: 'Times New Roman', Times, serif;
-
-    font-size: 20px;
-
-    color: #2e2e2e;
-
-    margin-bottom: 20px;
-}
-
 .social-links {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    margin-top: 20px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
 }
 
 .social {
-    width: 44px;
-    height: 44px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px; /* carré arrondi */
-    text-decoration: none;
-    font-weight: bold;
-    color: white;
-    transition: transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  color: white;
+  text-decoration: none;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 14px;
 }
 
-.social:hover {
-    transform: scale(1.1);
-}
-
-/* FACEBOOK - carré bleu */
 .social.facebook {
-    background: #1877F2;
-    font-size: 20px;
-     width: 28px; 
-    height: 28px;
-    font-family: Arial, sans-serif;
+  background: #1877F2;
 }
 
-/* X / TWITTER - agrandi */
 .social.twitter {
-    background: #000000;
-    font-size: 20px; /* agrandi */
-    font-weight: 600;
-    width: 30px; /* un peu plus grand que les autres */
-    height: 30px;
+  background: #000;
+  border-radius: 50%;
 }
 
-/* LINKEDIN - carré */
 .social.linkedin {
-    background: #0077B5;
-    font-size: 16px;
-    border-radius: 8px;
-     width: 28px; 
-    height: 28px;
+  background: #0077B5;
+  font-size: 16px;
+  border-radius: 8px; /* carré */
+  width: 28px;
+  height: 28px;
 }
 
 /* =========================================================

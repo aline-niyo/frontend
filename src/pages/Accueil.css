@@ -911,7 +911,7 @@
   text-decoration: none;
   font-weight: 500;
   font-size: 15px;
-  width: 80%;
+  width: 75%;
   transition: 0.3s;
 }
 
@@ -949,7 +949,8 @@
 .happy-clients {
   width: 100%;
   margin: 0 !important;
-  padding: 40px 0 !important;
+  /* padding: 60px 0 !important; */
+  padding: 60px 0 !important;
   overflow: hidden;
   background: #fff;
 }

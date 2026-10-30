@@ -11,12 +11,6 @@ import logodro from "../assets/dropbox_cutout.png";
 import logoba from "../assets/apropo.jpg";
 
  //nos clients
-import logo1 from "../assets/logos/coped.png";
-import logo2 from "../assets/logos/plateforme.png";
-import logo3 from "../assets/logos/conamus.png";
-import logo4 from "../assets/logos/abrema.png";
-import logo5 from "../assets/logos/abddm.png";
-import logo6 from "../assets/logos/pamac.png";
 
 import logo from "../assets/logo.png";
 
@@ -38,6 +32,18 @@ function Accueil() {
 }, []);
   
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+
+  const logosClients = [
+  "https://via.placeholder.com/150x80/1e2a5a/ffffff?text=ABREMA",
+  "https://via.placeholder.com/150x80/149e8e/ffffff?text=COOPEC",
+  "https://via.placeholder.com/150x80/003366/ffffff?text=BRB",
+  "https://via.placeholder.com/150x80/f58220/ffffff?text=BCB",
+  "https://via.placeholder.com/150x80/7c3aed/ffffff?text=LUMITEL",
+  "https://via.placeholder.com/150x80/0047AB/FFCC00?text=LEO",
+  "https://via.placeholder.com/150x80/222222/ffffff?text=ONAMOB",
+  "https://via.placeholder.com/150x80/e11d48/ffffff?text=INTERBANK",
+  "https://via.placeholder.com/150x80/FFCC00/000000?text=WESTERN"
+];
 
   // =====================================================
   // LISTE DES SERVICES
@@ -545,18 +551,13 @@ function Accueil() {
 </p>
   </div>
 
-  <div className="happy-clients-marquee-wrapper">
-    <div className="fade-left"></div>
-    <div className="fade-right"></div>
-
-    <div className="happy-clients-track">
-      {[...Array(3)].flatMap(() => [logo1, logo2, logo3, logo4, logo5, logo6]).map((logo, i) => (
-        <div key={i} className="client-card">
-          <img src={logo} alt="client" />
-        </div>
-      ))}
+ <div className="happy-clients-track">
+  {[...Array(3)].flatMap(() => logosClients).map((logo, i) => (
+    <div key={i} className="client-card">
+      <img src={logo} alt="client" style={{maxWidth:"130px", height:"60px", objectFit:"contain"}} />
     </div>
-  </div>
+  ))}
+</div>
 </section>
       {/* =====================================================
           4. NOTRE PROCESSUS
@@ -709,7 +710,7 @@ function Accueil() {
 
                                 <a
                                     href="#"
-                                    className="social twitter"
+                                    className="https://www.linkedin.com/"
                                 >
                                     X
                                 </a>

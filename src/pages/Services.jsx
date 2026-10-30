@@ -11,7 +11,6 @@ import logo5 from "../assets/logo2/im5.jpg";
 import logo6 from "../assets/logo2/im6.jpg";
 
 import droite from "../assets/back.webp";
-
 import logo from "../assets/logo.png"; 
 
 const defaultImages = {
@@ -24,8 +23,6 @@ const defaultImages = {
   "Formation Informatique": "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&h=400&fit=crop",
   "Conseil & Transformation Digitale": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
 };
-
-const colors = ["#3b82f6","#10b981","#f59e0b","#ef4444","#4e0ee5","#ec4899","#030303"];
 
 function Services() {
     useEffect(() => {
@@ -44,51 +41,68 @@ function Services() {
     const [services, setServices] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+    const [tentative, setTentative] = useState(0);
 
     useEffect(() => {
-       fetch("https://infoservices-backend-2-8fuq.onrender.com/api/services")
-            .then((res) => { if (!res.ok) throw new Error(); return res.json(); })
-            .then((data) => { setServices(data); setLoading(false); })
-            .catch(() => { setError("Impossible de récupérer les services."); setLoading(false); });
+      let attempts = 0;
+      const fetchServices = async () => {
+        attempts++;
+        setTentative(attempts);
+        try {
+          const res = await fetch("https://infoservices-backend-2-8fuq.onrender.com/api/services");
+          if (!res.ok) throw new Error();
+          const data = await res.json();
+          setServices(data);
+          setLoading(false);
+        } catch (err) {
+          if (attempts < 10) {
+            setTimeout(fetchServices, 30000);
+          } else {
+            setError("Le serveur met du temps à se réveiller, actualisez dans 1 minute");
+            setLoading(false);
+          }
+        }
+      };
+      fetchServices();
     }, []);
 
     return (
         <div className="services-page">
-            
-            {/* SECTION 1 - HERO */}
             <section className="services-hero">
                 <h1>Nos services</h1>
                 <p>Nous proposons des solutions numériques innovantes adaptées à vos objectifs d'affaires. Du développement au design et bien plus encore, 
                     nous sommes votre partenaire de confiance pour réussir dans le monde numérique.</p>
             </section>
 
-            {/* SECTION 2 - TES SERVICES */}
             <section className="services-section">
-  <h2>Nos Services Informatiques</h2>
-  <div className="services-grid">
-    {services.length > 0 ? services.map((s) => {
-      const imgSrc = s.image ? `/uploads/${s.image}` : (defaultImages[s.nom] || defaultImages["Développement web"]);
-      return (
-        <div key={s.id} className="service-card">
-          <div className="card-img">
-            <img src={imgSrc} alt={s.nom} />
-          </div>
-          <h3>{s.nom}</h3>
-          <p>{s.description}</p>
-          <span className="prix">{Number(s.prix).toLocaleString()} FBU</span>
-        </div>
-      )
-    }) : <p className="loading">Chargement...</p>}
-  </div>
-</section>
+              <h2>Nos Services Informatiques</h2>
+              <div className="services-grid">
+                {loading ? (
+                  <p className="loading">
+                    ⏳ Le serveur se réveille... tentative {tentative}/10 <br/>
+                    (1ère visite = 30s à 2min, normal sur Render gratuit)
+                  </p>
+                ) : services.length > 0 ? services.map((s) => {
+                  const imgSrc = s.image ? `/uploads/${s.image}` : (defaultImages[s.nom] || defaultImages["Développement Site Web Vitrine"]);
+                  return (
+                    <div key={s.id} className="service-card">
+                      <div className="card-img">
+                        <img src={imgSrc} alt={s.nom} />
+                      </div>
+                      <h3>{s.nom}</h3>
+                      <p>{s.description}</p>
+                      <span className="prix">{Number(s.prix).toLocaleString()} FBU</span>
+                    </div>
+                  )
+                }) : <p>{error}</p>}
+              </div>
+            </section>
 
-            {/* SECTION 3 - STACK TECHNOLOGIQUE */}
            <section className="happy-clients">
              <div className="happy-clients-header">
               <h2>Notre stack technologique</h2>
               <p>Nous intégrons les dernières technologies et outils pour fournir des solutions innovantes.</p>
              </div>
-           
              <div className="happy-clients-marquee-wrapper">
                <div className="fade-left"></div>
                <div className="fade-right"></div>
@@ -100,7 +114,6 @@ function Services() {
                  ))}
                </div>
              </div>
-
              <div className="tech-stack-section">
                 <div className="cta-card">
                     <div className="cta-text">
@@ -112,7 +125,6 @@ function Services() {
              </div>
            </section>
 
-            {/* SECTION 4 - CTA FINALE 2 COLONNES */}
             <section className="services-cta">
                 <div className="cta-left">
                     <h2>Prêt à digitaliser votre organisation ?</h2>
@@ -124,132 +136,46 @@ function Services() {
                 </div>
             </section>
 
-            {/* FOOTER */}
              <footer className="contact-footer">
-             
                              <div className="footer-container">
-             
-                                 {/* Logo / présentation */}
                                  <div className="footer-column footer-about">
-             
                <Link to="/" className="navbar-logo">
                        <img src={logo} alt="Logo InfoServices" />
                        <span>InfoServices</span>
                      </Link>
-                                     {/* <h2>
-                                         Info<span>Services</span>
-                                     </h2> */}
-             
                                            <div className="social-links">
-             
-                                             <a
-                                                 href="https://www.facebook.com/profile.php?id=100081083984402&sk=reels_tab"
-                                                 className="social facebook"
-                                             >
-                                                 f
-                                             </a>
-             
-                                             <a
-                                                 href="#"
-                                                 className="social twitter"
-                                             >
-                                                 X
-                                             </a>
-             
-                                             <a
-                                                 href="#"
-                                                 className="social linkedin"
-                                             >
-                                                 in
-                                             </a>
-             
+                                             <a href="https://www.facebook.com/profile.php?id=100081083984402&sk=reels_tab" className="social facebook">f</a>
+                                             <a href="#" className="social twitter">X</a>
+                                             <a href="https://www.linkedin.com/" className="social linkedin" target="_blank">in</a>
                                          </div>
-             
                                  </div>
-             
-             
-                                 {/* Navigation */}
                                  <div className="footer-column">
-             
-                                     <h3>
-                                         Navigation
-                                     </h3>
-             
+                                     <h3>Navigation</h3>
                                     <div className="footer-column">
-              
                  <Link to="/">Accueil</Link>
                  <Link to="/services">Services</Link>
                  <Link to="/apropos">À propos</Link>
                  <Link to="/contact">Contact</Link>
              </div>
-             
                                  </div>
-             
-             
-                                 {/* Services */}
                                  <div className="footer-column">
-             
-                                     <h3>
-                                         Nos services
-                                     </h3>
-             
-                                     <a href="/services">
-                                         Développement web
-                                     </a>
-             
-                                     <a href="/services">
-                                         Solutions informatiques
-                                     </a>
-             
-                                     <a href="/services">
-                                         Maintenance
-                                     </a>
-             
-                                     <a href="/services">
-                                         Conseil informatique
-                                     </a>
-             
+                                     <h3>Nos services</h3>
+                                     <a href="/services">Développement web</a>
+                                     <a href="/services">Solutions informatiques</a>
+                                     <a href="/services">Maintenance</a>
+                                     <a href="/services">Conseil informatique</a>
                                  </div>
-             
-             
-                                 {/* Contact */}
                                  <div className="footer-column">
-             
-                                     <h3>
-                                         Contact
-                                     </h3>
-             
-                                     <p>
-                                          Bujumbura, Burundi
-                                     </p>
-             
-                                     <p>
-                                          alineniyomwungere99@gmail.com
-                                     </p>
-             
-                                     <p>
-                                          +257 62573421
-                                     </p>
-             
+                                     <h3>Contact</h3>
+                                     <p>Bujumbura, Burundi</p>
+                                     <p>alineniyomwungere99@gmail.com</p>
+                                     <p>+257 62573421</p>
                                  </div>
-             
                              </div>
-             
-             
-                             {/* Bas du footer */}
                              <div className="footer-bottom">
-             
-                                 <p>
-                                     © {new Date().getFullYear()} InfoServices.
-                                     Tous droits réservés.
-                                 </p>
-             
-                             
-             
+                                 <p>© {new Date().getFullYear()} InfoServices. Tous droits réservés.</p>
                              </div>
-             
                          </footer>
-
         </div>
     );
 }

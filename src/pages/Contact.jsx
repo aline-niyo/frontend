@@ -294,30 +294,30 @@ function Contact() {
                             </h3>
 
                             <div className="social-links">
+    <a
+        href="https://www.facebook.com/profile.php?id=100081083984402&sk=reels_tab"
+        className="social facebook"
+        target="_blank"
+    >
+        f
+    </a>
 
-                                <a
-                                    href="https://www.facebook.com/profile.php?id=100081083984402&sk=reels_tab"
-                                    className="social facebook"
-                                >
-                                    f
-                                </a>
+    <a
+        href="#"
+        className="social twitter"
+        target="_blank"
+    >
+        X
+    </a>
 
-                                <a
-                                    href="#"
-                                    className="social twitter"
-                                >
-                                    X
-                                </a>
-
-                                <a
-                                    href="#"
-                                    className="https://www.linkedin.com/"
-                                >
-                                    in
-                                </a>
-
-                            </div>
-
+    <a
+        href="https://www.linkedin.com/"
+        className="social linkedin"
+        target="_blank"
+    >
+        in
+    </a>
+</div>
                         </div>
 
                     </div>
