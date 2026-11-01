@@ -1861,3 +1861,41 @@
     text-align: center !important;
   }
 }
+
+
+
+/* FIX HERO CENTRE SUR 【entity-SAMSUNG¦canonical_name=Samsung】 */
+
+@media (max-width: 1000px) {
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    justify-items: center !important;
+    text-align: center !important;
+  }
+  .hero-text {
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .hero-title {
+    text-align: center !important;
+    width: 100% !important;
+  }
+  .hero-subtitle {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .hero-actions {
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  .growth-card-container {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
