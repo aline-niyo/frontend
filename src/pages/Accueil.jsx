@@ -481,7 +481,7 @@ useEffect(() => {
       <img 
         src={logoba} 
         alt="InfoServices" 
-        style={{ width: '100%', height: '400px', objectFit: 'cover', borderRadius: '25px' }} 
+       style={{ width: '100%', height: 'auto', maxHeight: '400px', objectFit: 'cover', borderRadius: '25px' }} 
       />
     </div>
 

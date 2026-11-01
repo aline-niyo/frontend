@@ -1830,4 +1830,34 @@
 .hebergement-section.in-view .hebergement-card:nth-child(5) { animation-delay: 0.5s; }
 .hebergement-section.in-view .hebergement-card:nth-child(6) { animation-delay: 0.6s; }
 
+/* FIX FINAL 【entity-SAMSUNG¦canonical_name=Samsung】 POUR ACCUEIL.JSX */
 
+@media (max-width: 768px) {
+  .hebergement-grid {
+    grid-template-columns: 1fr !important;
+    padding: 0 10px !important;
+  }
+  .about-home-container {
+    grid-template-columns: 1fr !important;
+  }
+  .about-home-image img {
+    height: auto !important;
+  }
+  .stats-card {
+    grid-template-columns: 1fr !important;
+  }
+  .process-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .trust-logos {
+    gap: 20px !important;
+    flex-wrap: wrap !important;
+  }
+  .happy-clients-track {
+    animation: scroll 20s linear infinite !important; /* ton 2s était trop rapide */
+  }
+  .footer-container {
+    grid-template-columns: 1fr !important;
+    text-align: center !important;
+  }
+}
