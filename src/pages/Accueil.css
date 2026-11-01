@@ -1863,39 +1863,105 @@
 }
 
 
-
-/* FIX HERO CENTRE SUR 【entity-SAMSUNG¦canonical_name=Samsung】 */
-
-@media (max-width: 1000px) {
+/* HERO A GAUCHE SUR SAMSUNG */
+@media (max-width: 768px) {
   .hero-grid {
-    grid-template-columns: 1fr !important;
-    justify-items: center !important;
-    text-align: center !important;
-  }
-  .hero-text {
-    max-width: 100% !important;
-    margin: 0 auto !important;
-    text-align: center !important;
     display: flex !important;
     flex-direction: column !important;
-    align-items: center !important;
+    align-items: flex-start !important;
   }
-  .hero-title {
-    text-align: center !important;
+  .hero-text {
     width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    margin-right: auto !important;
   }
-  .hero-subtitle {
-    text-align: center !important;
-    margin-left: auto !important;
+  .hero-title, .hero-subtitle {
+    text-align: left !important;
+    width: 100% !important;
+    margin-left: 0 !important;
     margin-right: auto !important;
   }
   .hero-actions {
-    justify-content: center !important;
-    align-items: center !important;
-    width: 100% !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
   }
-  .growth-card-container {
+}
+
+
+/* SUPPRIMER LE GRAND VIDE A GAUCHE SUR SAMSUNG */
+@media (max-width: 768px) {
+  .hero-section {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    padding-top: 120px !important;
+  }
+  .hero-grid {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
     width: 100% !important;
-    justify-content: center !important;
+    max-width: 100% !important;
+  }
+  .hero-text {
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+    max-width: 100% !important;
+  }
+  .hero-title {
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+  }
+}
+
+/* BOUTONS PARALLELES - UN A GAUCHE UN A DROITE SUR SAMSUNG */
+/* FIX FINAL - 2 BOUTONS SUR MEME LIGNE SANS COLLER AUTRE CHOSE */
+@media (max-width: 768px) {
+  .hero-actions {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+  }
+  .btn-devis {
+    width: auto !important;
+    flex: 0 0 auto !important;
+    /* max-width: none !important; */
+    padding: 10px 14px !important;
+    font-size: 13px !important;
+  }
+  .btn-video {
+    width: auto !important;
+    flex: 0 0 auto !important;
+    padding: 10px 14px !important;
+    font-size: 13px !important;
+  }
+}
+
+
+/* FIX 6 BOUTONS COMMANDEZ - PLUS PETITS SUR SAMSUNG */
+@media (max-width: 768px) {
+  .hebergement-footer {
+    text-align: center !important;
+    padding: 15px 15px 20px 15px !important;
+  }
+  .hebergement-btn {
+    width: auto !important;
+    max-width: 200px !important;
+    padding: 8px 18px !important;
+    font-size: 13px !important;
+    display: inline-block !important;
+    margin: 0 auto !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hebergement-btn {
+    max-width: 170px !important;
+    padding: 7px 14px !important;
+    font-size: 12px !important;
   }
 }

@@ -1,18 +1,19 @@
-.devis-page { font-family: 'Plus Jakarta Sans', sans-serif; }
+.devis-page { font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
 
 .section {
-  padding: 20px 20px; /* au lieu de 60px */
+  padding: 20px 20px;
 }
 
 .hero-section { 
   background: #0f172a; 
   color: white;
-  padding: 100px 20px 35px 100px; /* petit en haut et bas */
-  min-height: 10px; /* enlève la hauteur vide */
+  padding: 120px 20px 40px 20px; /* j'ai enlevé le 100px à gauche qui créait le vide */
+  min-height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .hero-section h1 { 
@@ -20,7 +21,6 @@
   margin: 0 0 12px 0; 
   line-height: 1.5;
 }
-
 .hero-section p { 
   font-size: 16px; 
   text-align: center;
@@ -29,7 +29,6 @@
   margin: 0;
   line-height: 1.4;
 }
-
 .hero-btn { 
   display: inline-block; 
   margin-top: 18px; 
@@ -48,144 +47,42 @@
   width: 100%;
 }
 
-/* --- Section Services - Design capture --- */
+/* --- Services --- */
 .services-section {
   background: #faf8f6;
   padding: 50px 20px;
 }
-
-.services-section {
-  background: #faf8f6;
-  padding: 50px 30px 50px 20px; 
-}
-
-.services-section h2 {
-  text-align: center;
-  font-family: 'Instrument Serif', Georgia, serif;
-  font-size: 20px;
-  font-weight: 200;
-  color: #111827;
-  margin-top: 0; /* enlève l'espace par défaut */
-  margin-bottom: 25px;
-}
-
 .services-grid {
-  max-width: 1100px; /* un peu moins large pour que 3 tiennent bien */
+  max-width: 1100px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 par ligne */
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
-
 .service-card {
   background: #ffffff;
-  border-radius: 20px; /* plus petit */
+  border-radius: 20px;
   padding: 12px 12px 20px 12px;
   border: 1px solid rgba(0,0,0,0.04);
   box-shadow: 0 6px 24px rgba(0,0,0,0.05);
   text-align: center;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.service-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
-}
-
-.card-img {
-  width: 100%;
-  height: 160px; /* IMAGE DIMINUÉE - avant 240px */
-  border-radius: 14px;
-  overflow: hidden;
-  margin-bottom: 14px;
-  background: #f1f5f9;
-}
-
-.card-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.service-card h3 {
-  font-family: 'Instrument Serif', Georgia, serif;
-  font-size: 18px; /* TITRE DIMINUÉ - avant 23px */
-  line-height: 1.3;
-  color: #111827;
-  margin: 0 0 8px 0;
-  padding: 0 8px;
-}
-
-.service-card p {
-  font-size: 13px; /* PARAGRAPHE DIMINUÉ - avant 15px */
-  line-height: 1.5;
-  color: #5b6577;
-  padding: 0 8px;
-  margin: 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 3; /* 3 lignes au lieu de 4 */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.service-card .prix {
-  margin-top: auto;
-  padding-top: 12px;
-  font-size: 12px;
-  font-weight: 600;
-  color: #111827;
-}
-
-.loading {
-  grid-column: 1 / -1;
-  text-align: center;
-  color: #6b7280;
-}
-
-/* Responsive - reste 3 sur tablette, 1 sur mobile */
-@media (max-width: 1024px) {
-  .services-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
-  .card-img {
-    height: 140px;
-  }
-}
-
-@media (max-width: 768px) {
-  .services-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 par ligne sur tablette */
-  }
-}
-
-@media (max-width: 640px) {
-  .services-grid {
-    grid-template-columns: 1fr; /* 1 par ligne sur téléphone */
-    max-width: 360px;
-  }
-}
-
-/* fin service */
-
-    /* devis */
+/* --- Devis --- */
 .devis-form-section {
   background: #faf8f6;
   padding: 50px 20px;
 }
-
 .devis-wrapper {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr; /* 60% form / 40% info */
+  grid-template-columns: 1.2fr 0.8fr;
   gap: 50px;
   align-items: start;
 }
-
 .devis-container {
   background: #fff;
   padding: 30px;
@@ -193,247 +90,95 @@
   border: 1px solid rgba(0,0,0,0.05);
   box-shadow: 0 8px 30px rgba(0,0,0,0.06);
 }
-
 .devis-container h2 {
-  font-family: 'Instrument Serif', Georgia, serif;
   font-size: 22px;
   margin-bottom: 20px;
   color: #111827;
 }
 
+/* ICI LE FIX IMPORTANT */
 .form-row {
-  display: grid;
+  display: grid !important;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
+  width: 100%;
 }
-
 .form-group {
-  display: flex;
-  flex-direction: column;
+  display: flex !important;
+  flex-direction: column !important;
   margin-bottom: 14px;
+  width: 100% !important;
+  min-width: 0 !important;
 }
-
 .form-group label {
   font-size: 12px;
   font-weight: 600;
   margin-bottom: 5px;
   color: #374151;
 }
-
 .form-group input,
 .form-group select,
 .form-group textarea {
-  padding: 9px 12px;
+  width: 100% !important;
+  padding: 12px !important;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
-  font-size: 13px;
-  outline: none;
+  font-size: 16px !important;
+  box-sizing: border-box !important;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  border-color: #111827;
-}
-
-.submit-button.small {
-  padding: 7px 16px;
-  font-size: 12px;
-  font-weight: 600;
-  border-radius: 20px;
+.submit-button {
   background: #111827;
   color: #fff;
+  padding: 14px 22px;
+  border-radius: 8px;
   border: none;
   cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
 }
-
-/* COLONNE 2 */
-.devis-info {
-  position: sticky;
-  top: 20px;
-}
-
-.devis-image {
-  width: 100%;
-  height: 280px;
-  border-radius: 20px;
-  overflow: hidden;
-  margin-bottom: 20px;
-}
-
-.devis-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.devis-info h3 {
-  font-family: 'Instrument Serif', Georgia, serif;
-  font-size: 28px;
-  margin-bottom: 12px;
-  color: #111827;
-}
-
-.devis-info p {
-  font-size: 15px;
-  line-height: 1.6;
-  color: #5b6577;
-  margin-bottom: 12px;
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-  .devis-wrapper {
-    grid-template-columns: 1fr; /* 1 colonne sur mobile */
-  }
-  .form-row {
-    grid-template-columns: 1fr;
-  }
-  .devis-info {
-    order: -1; /* photo en haut sur mobile */
-  }
-  .devis-image {
-    height: 200px;
-  }
-}
-/* --- LE PETIT BOUTON --- */
-.submit-button.small {
-  padding: 16px 16px; /* très petit */
-  font-size: 12px;
-  font-weight: 500;
-  border-radius: 20px; /* arrondi comme une pilule */
-  width: auto; /* pas 100% */
-  display: inline-block;
-  line-height: 1;
-  letter-spacing: 0.3px;
-}
-
-/* Si tu le veux collé à gauche */
-/* .devis-container form {
-  text-align: left;
-} */
-
-/* Si tu le veux au centre */
-.devis-container form:has(.submit-button.small) {
-  text-align: center;
-}
-
-/* fin devis */
-.form-row { display: flex; gap: 15px; }
-.form-group { flex: 1; display: flex; flex-direction: column; margin-bottom: 18px; }
-.form-group label { font-weight: bold; margin-bottom: 6px; }
-.form-group input, .form-group select, .form-group textarea { padding: 12px; border: 1px solid #ddd; border-radius: 8px; }
-.submit-button { width: 100%; background: #0f172a; color: white; padding: 14px; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; }
-.submit-button:disabled { opacity: 0.6; }
 .success-message { background: #dcfce7; color: #166534; padding: 12px; border-radius: 8px; margin-bottom: 15px; }
 .error-message { background: #fee2e2; color: #991b1b; padding: 12px; border-radius: 8px; margin-bottom: 15px; }
 
-.process-section { background: #f1f5f9; }
+.devis-info { position: sticky; top: 20px; }
+.devis-image { width: 100%; height: 280px; border-radius: 20px; overflow: hidden; margin-bottom: 20px; }
+.devis-image img { width: 100%; height: 100%; object-fit: cover; }
+.devis-info h3 { font-size: 28px; margin-bottom: 12px; color: #111827; }
+.devis-info p { font-size: 15px; line-height: 1.6; color: #5b6577; margin-bottom: 12px; }
+
+.process-section { background: #f1f5f9; padding: 40px 20px; }
 .process-steps { display: flex; justify-content: center; gap: 40px; margin-top: 30px; flex-wrap: wrap; }
-.step span { display: inline-block; width: 45px; height: 45px; background: #1d1d1d; color: white; border-radius: 50%; line-height: 50px; font-weight: bold; }
 
-.contact-section { background: #0f172a; color: white; }
-.contact-infos { margin-top: 20px; font-size: 18px; line-height: 2; }
-
-/* bouton */
-.submit-button {
-  padding: 8px 18px; /* plus petit - avant c'était sûrement 12px 28px */
-  font-size: 13px; /* texte plus petit */
-  border-radius: 8px; /* moins gros */
-  height: auto;
-  line-height: 1.4;
-  min-width: auto;
+/* --- RESPONSIVE SAMSUNG --- */
+@media (max-width: 900px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .devis-wrapper { grid-template-columns: 1fr !important; }
+  .form-row { grid-template-columns: 1fr !important; }
+  .devis-info { order: -1; }
+  .devis-image { height: 200px; }
+}
+@media (max-width: 640px) {
+  .services-grid { grid-template-columns: 1fr !important; max-width: 360px; }
+  .hero-section { padding: 110px 15px 30px 15px !important; }
 }
 
-
-
-/* =========================================================
-   FOOTER BOTTOM
-========================================================= */
-
-.footer-bottom {
-
-    max-width: 1250px;
-
-    margin: auto;
-
-    padding: 25px 6%;
-
-    border-top: 1px solid #1e293b;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    gap: 20px;
+/* BOUTON PETIT SUR SAMSUNG */
+@media (max-width: 768px) {
+  .btn-devis {
+    width: auto !important;
+    max-width: 220px !important;
+    padding: 12px 20px !important;
+    font-size: 14px !important;
+    display: inline-flex !important;
+    justify-content: center !important;
+  }
+  .hero-actions {
+    align-items: flex-start !important; /* bouton collé à gauche, pas étiré */
+    width: auto !important;
+  }
+  .btn-video {
+    width: auto !important;
+    max-width: 220px !important;
+    padding: 10px 18px !important;
+  }
 }
-
-.footer-bottom p {
-
-    margin: 0;
-
-    color: #64748b;
-
-    font-size: 13px;
-}
-
-.footer-social {
-
-    display: flex;
-
-    gap: 20px;
-}
-
-.footer-social a {
-
-    color: #94a3b8;
-
-    text-decoration: none;
-
-    font-size: 13px;
-
-    transition: 0.3s;
-}
-
-.footer-social a:hover {
-
-    color: #38bdf8;
-}
-
-/* écriture qui monte */
-@keyframes textUp {
-  0% { opacity: 0; transform: translateY(40px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-/* départ invisible */
-.hero-section h1, .hero-section p, .hero-btn,
-.services-section .service-card h3, .services-section .service-card p, .services-section .prix,
-.devis-container h2, .devis-info h3, .devis-info p,
-.form-group label, .submit-button, .process-section h2, .step h4, .step p {
-  opacity: 0;
-}
-
-/* HERO */
-.hero-section.in-view h1 { animation: textUp 0.7s cubic-bezier(0.22,1,0.36,1) forwards; }
-.hero-section.in-view p { animation: textUp 0.6s ease-out 0.15s forwards; }
-.hero-section.in-view .hero-btn { animation: textUp 0.6s ease-out 0.3s forwards; }
-
-/* SERVICES DU DEVIS */
-.services-section.in-view .service-card h3 { animation: textUp 0.6s ease-out 0.1s forwards; }
-.services-section.in-view .service-card p { animation: textUp 0.6s ease-out 0.15s forwards; }
-.services-section.in-view .service-card .prix { animation: textUp 0.6s ease-out 0.2s forwards; }
-
-/* FORMULAIRE */
-.devis-form-section.in-view .devis-container h2 { animation: textUp 0.6s ease-out forwards; }
-.devis-form-section.in-view .form-group label { animation: textUp 0.5s ease-out 0.1s forwards; }
-.devis-form-section.in-view .devis-info h3 { animation: textUp 0.6s ease-out 0.15s forwards; }
-.devis-form-section.in-view .devis-info p { animation: textUp 0.6s ease-out 0.2s forwards; }
-.devis-form-section.in-view .submit-button { animation: textUp 0.6s ease-out 0.3s forwards; }
-
-/* PROCESS */
-.process-section.in-view h2 { animation: textUp 0.6s ease-out forwards; }
-.process-section.in-view .step h4 { animation: textUp 0.6s ease-out 0.1s forwards; }
-.process-section.in-view .step p { animation: textUp 0.6s ease-out 0.15s forwards; }
