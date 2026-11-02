@@ -1040,3 +1040,87 @@ line-height: 0.5;
 .cta-wrapper.in-view .cta-text h2 { animation: textUp 0.6s ease-out forwards; }
 .cta-wrapper.in-view .cta-text p { animation: textUp 0.6s ease-out 0.15s forwards; }
 .cta-wrapper.in-view .cta-btn { animation: textUp 0.6s ease-out 0.3s forwards; }
+
+/* notre mission scoll */
+/* CENTRER + ENLEVER VIDE - HERO-CONTENT */
+.hero-content {
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding-bottom: 15px !important;
+}
+
+.hero-content h1 {
+  text-align: center !important;
+  margin: 0 auto 10px auto !important;
+  width: 100% !important;
+}
+
+.hero-content p {
+  text-align: center !important;
+  margin: 0 auto !important;
+  max-width: 90% !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 70px 15px 15px 15px !important;
+  }
+}
+
+/* ENLEVER GRAND ESPACE AU DESSUS DU TITRE - HERO-CONTENT */
+.hero-content {
+  padding-top: 10px !important;
+  margin-top: 0 !important;
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+}
+
+.hero-content h1 {
+  text-align: center !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  margin-bottom: 10px !important;
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+  }
+  /* Le parent qui fait le grand vide */
+  .hero,
+  .apropos-hero,
+  .histoire-container,
+  .about-hero {
+    padding-top: 65px !important; /* avant 130px */
+    min-height: auto !important;
+  }
+}
+
+/* enlever espace en haut de notr */
+/* DIMINUER ESPACE AU DESSUS DU TITRE - PAS ENLEVER TOTAL */
+.histoire-section {
+  padding-top: 30px !important; /* avant 60px */
+}
+
+.histoire-content h2 {
+  margin-top: 5px !important; /* petit espace */
+  padding-top: 5px !important;
+}
+
+@media (max-width: 768px) {
+  .histoire-section {
+    padding-top: 5px !important; /* sur Samsung encore plus petit */
+  }
+  .histoire-content h2 {
+    margin-top: 5px !important;
+  }
+}

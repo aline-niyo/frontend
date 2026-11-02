@@ -374,7 +374,7 @@
 }
 
 .growth-icon-box {
-    height: 55px;
+    height: 45px !important;
 
     display: flex;
 
@@ -387,7 +387,7 @@
 
     border: 1px solid rgba(255, 255, 255, 0.10);
 
-    font-size: 22px;
+    font-size: 32px !important;
 
     transition: 0.3s;
 }
@@ -411,7 +411,7 @@
     align-items: center;
     justify-content: center;
     gap: 50px;
-    padding: 30px 0;
+    padding: 30px 10px;
     position: relative;
     flex-wrap: wrap;
 }
@@ -435,7 +435,7 @@
 
 @media (max-width: 768px) {
   .valeur-icon {
-    height: 42px;
+    height: 35px !important;
     max-width: 120px;
   }
   .trust-logos {
@@ -1965,3 +1965,71 @@
     font-size: 12px !important;
   }
 }
+
+
+/* 4 LOGOS SUR MEME LIGNE TELEPHONE - TRUST-LOGOS */
+@media (max-width: 768px) {
+  .trust-logos {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 12px !important;
+    overflow-x: auto !important;
+    width: 100% !important;
+  }
+  .trust-logos img,
+  .trust-logos > div,
+  .trust-logos span {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    max-width: 75px !important;
+    font-size: 12px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .trust-logos {
+    gap: 8px !important;
+  }
+  .trust-logos img {
+    max-width: 60px !important;
+  }
+}
+
+
+/* ENLEVE GRAND VIDE AUTOUR DES 4 LOGOS */
+.trust-logos {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* La section qui contient trust-logos */
+.trust-section,
+.trusted-section,
+.partners-section {
+  padding: 15px 10px !important; /* avant c'était 60px ou 100px */
+  margin: 0 !important;
+}
+
+/* ESPACE ENTRE PHRASE ET LOGOS */
+.trust-logos {
+  margin-top: 12px !important; /* espace au dessus des logos */
+}
+
+/* La phrase "Ils nous font confiance" */
+.trust-section p,
+.trusted-section p,
+.trust-title,
+.trust-label {
+  margin-top: 8px;
+  margin-bottom: 12px !important;
+}
+
+/* FIX ESPACE AU DESSUS - VERSION FORCÉE */
+div[class*="trust"] {
+  padding-top: 10px !important;
+}
+
+

@@ -732,4 +732,123 @@ line-height: 0.5;
 .services-cta.in-view .cta-left p { animation: textUp 0.6s ease-out 0.1s forwards; }
 .services-cta.in-view .cta-btn { animation: textUp 0.6s ease-out 0.2s forwards; }
 
+ /* telephone samsung */
 
+/* CENTRER TEXTE NOS SERVICES SUR 【entity-SAMSUNG¦canonical_name=Samsung】 */
+.services-hero {
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.services-hero h1,
+.services-hero p {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+@media (max-width: 768px) {
+  .services-hero {
+    padding: 70px 15px 35px 8px !important;
+    text-align: center !important;
+  }
+  .services-hero h1 {
+    font-size: 26px !important;
+    text-align: center !important;
+  }
+  .services-hero p {
+    font-size: 15px !important;
+    text-align: center !important;
+    max-width: 90% !important;
+  }
+}
+
+
+/* afficher les 2 par ligne */
+/* 2 PAR LIGNE SANS COUPURE DROITE - SAMSUNG */
+@media (max-width: 768px) {
+  .services-section {
+    padding: 20px 8px !important; /* moins de padding */
+    overflow: hidden !important;
+  }
+  .services-section .services-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .services-section .service-card {
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    padding: 8px 6px 12px 6px !important;
+  }
+  .card-img {
+    height: 100px !important;
+  }
+}
+
+/* enleve le vide entre heppyclients */
+/* ENLEVER VIDE ENTRE HAPPY-CLIENTS ET SERVICES-CTA */
+.happy-clients {
+  padding-bottom: 15px !important;
+  margin-bottom: 0 !important;
+}
+
+.tech-stack-section {
+  padding-bottom: 10px !important;
+  margin-bottom: 0 !important;
+}
+
+.cta-card {
+  margin-bottom: 10px !important;
+}
+
+/* Section suivante "Prêt à digitaliser" */
+.services-cta {
+  padding-top: 15px !important;
+  margin-top: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .happy-clients {
+    padding-bottom: 10px !important;
+  }
+  .tech-stack-section {
+    padding-bottom: 5px !important;
+  }
+  .services-cta {
+    padding-top: 10px !important;
+    margin-top: 0 !important;
+  }
+}
+
+/* enleve le vide entre pret a digitaliser et footer */
+/* ESPACE EQUILIBRE ENTRE SERVICES-CTA ET FOOTER - PAS SERRE */
+.services-cta {
+  padding-bottom: 35px !important;
+  margin-bottom: 0 !important;
+}
+
+.contact-footer,
+footer.contact-footer {
+  padding-top: 30px !important;
+  margin-top: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .services-cta {
+    padding-bottom: 25px !important;
+    margin-bottom: 0 !important;
+  }
+  .contact-footer {
+    padding-top: 20px !important;
+    margin-top: 0 !important;
+  }
+}
