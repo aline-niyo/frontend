@@ -957,3 +957,20 @@ line-height: 0.5;
   margin-bottom: 10px !important;
 }
 
+/* footer sur telephone samsung */
+@media (max-width: 768px) {
+  .footer-container {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    column-gap: 15px !important;
+    row-gap: 40px !important; /* ESPACE ENTRE HAUT ET BAS */
+    padding-top: 25px !important;
+    padding-bottom: 25px !important;
+  }
+
+  /* Les 2 du bas un peu plus espacés */
+  .footer-container .footer-column:nth-child(3),
+  .footer-container .footer-column:nth-child(4) {
+    margin-top: 10px !important;
+  }
+}

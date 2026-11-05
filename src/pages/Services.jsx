@@ -126,129 +126,53 @@ function Services() {
 
             {/* FOOTER */}
              <footer className="contact-footer">
-             
-                             <div className="footer-container">
-             
-                                 {/* Logo / présentation */}
-                                 <div className="footer-column footer-about">
-             
-               <Link to="/" className="navbar-logo">
-                       <img src={logo} alt="Logo InfoServices" />
-                       <span>InfoServices</span>
-                     </Link>
-                                     {/* <h2>
-                                         Info<span>Services</span>
-                                     </h2> */}
-             
-                                           <div className="social-links">
-             
-                                             <a
-                                                 href="https://www.facebook.com/profile.php?id=100081083984402&sk=reels_tab"
-                                                 className="social facebook"
-                                             >
-                                                 f
-                                             </a>
-             
-                                             <a
-                                                 href="https://x.com/i/jf/onboarding/web#/s/face_liveness/r-qm8vsl"
-                                                 className="social twitter"
-                                             >
-                                                 X
-                                             </a>
-             
-                                             <a
-                                                 href="https://www.linkedin.com/checkpoint/challengesV3/AQF-gMPvquMaoQAAAaGMHbISLtsFnDyP2yUvs6zV8c3IICtgFlyIzkS4IyAADqq8pjhzkL5yh3y_xM5pR_bm-Xjo_PNROQ"
-                                                 className="social linkedin"
-                                             >
-                                                 in
-                                             </a>
-             
-                                         </div>
-             
-                                 </div>
-             
-             
-                                 {/* Navigation */}
-                                 <div className="footer-column">
-             
-                                     <h3>
-                                         Navigation
-                                     </h3>
-             
-                                    <div className="footer-column">
-              
-                 <Link to="/">Accueil</Link>
-                 <Link to="/services">Services</Link>
-                 <Link to="/apropos">À propos</Link>
-                 <Link to="/contact">Contact</Link>
-             </div>
-             
-                                 </div>
-             
-             
-                                 {/* Services */}
-                                 <div className="footer-column">
-             
-                                     <h3>
-                                         Nos services
-                                     </h3>
-             
-                                     <a href="/services">
-                                         Développement web
-                                     </a>
-             
-                                     <a href="/services">
-                                         Solutions informatiques
-                                     </a>
-             
-                                     <a href="/services">
-                                         Maintenance
-                                     </a>
-             
-                                     <a href="/services">
-                                         Conseil informatique
-                                     </a>
-             
-                                 </div>
-             
-             
-                                 {/* Contact */}
-                                 <div className="footer-column">
-             
-                                     <h3>
-                                         Contact
-                                     </h3>
-             
-                                     <p>
-                                          Bujumbura, Burundi
-                                     </p>
-             
-                                     <p>
-                                          alineniyomwungere99@gmail.com
-                                     </p>
-             
-                                     <p>
-                                          +257 62573421
-                                     </p>
-             
-                                 </div>
-             
-                             </div>
-             
-             
-                             {/* Bas du footer */}
-                             <div className="footer-bottom">
-             
-                                 <p>
-                                     © {new Date().getFullYear()} InfoServices.
-                                     Tous droits réservés.
-                                 </p>
-             
-                             
-             
-                             </div>
-             
-                         </footer>
+  <div className="footer-container">
+
+    {/* 1 - Logo / présentation */}
+    <div className="footer-column footer-about">
+      <Link to="/" className="navbar-logo">
+        <img src={logo} alt="Logo InfoServices" />
+        <span>InfoServices</span>
+      </Link>
+      <div className="social-links">
+        <a href="https://www.facebook.com/profile.php?id=100081083984402&sk=reels_tab" className="social facebook">f</a>
+        <a href="https://x.com/i/jf/onboarding/web#/s/face_liveness/r-qm8vsl" className="social twitter">X</a>
+        <a href="https://www.linkedin.[STRIPPED 122 bytes]" className="social linkedin">in</a>
+      </div>
+    </div>
+
+    {/* 2 - Navigation */}
+    <div className="footer-column">
+      <h3>Navigation</h3>
+      <Link to="/">Accueil</Link>
+      <Link to="/services">Services</Link>
+      <Link to="/apropos">À propos</Link>
+      <Link to="/contact">Contact</Link>
+    </div>
+
+    {/* 3 - Services */}
+    <div className="footer-column">
+      <h3>Nos services</h3>
+      <a href="/services">Développement web</a>
+      <a href="/services">Solutions informatiques</a>
+      <a href="/services">Maintenance</a>
+      <a href="/services">Conseil informatique</a>
+    </div>
+
+    {/* 4 - Contact */}
+    <div className="footer-column">
+      <h3>Contact</h3>
+      <p>Bujumbura, Burundi</p>
+      <p>alineniyomwungere99@gmail.com</p>
+      <p>+257 62573421</p>
+    </div>
+
+  </div>
+
+  <div className="footer-bottom">
+    <p>© {new Date().getFullYear()} InfoServices. Tous droits réservés.</p>
+  </div>
+</footer>
 
         </div>
     );
