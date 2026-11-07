@@ -8,6 +8,8 @@ import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import Devis from "./pages/demandes_devis";
 
+import DeveloppementWeb from "./pages/DeveloppementWeb";
+
 function App() {
 
     return (
@@ -27,6 +29,8 @@ function App() {
                 <Route path="/contact" element={<Contact />} />
 
                 <Route path="/devis" element={<Devis />} />
+
+                <Route path="/services/developpement-web" element={<DeveloppementWeb />} />
 
             </Routes>
 

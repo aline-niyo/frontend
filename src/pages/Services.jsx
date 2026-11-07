@@ -150,14 +150,15 @@ function Services() {
       <Link to="/contact">Contact</Link>
     </div>
 
-    {/* 3 - Services */}
-    <div className="footer-column">
-      <h3>Nos services</h3>
-      <a href="/services">Développement web</a>
-      <a href="/services">Solutions informatiques</a>
-      <a href="/services">Maintenance</a>
-      <a href="/services">Conseil informatique</a>
-    </div>
+
+{/* Services - METS les vraies pages */}
+<div className="footer-column">
+  <h3>Nos services</h3>
+  <Link to="/services/developpement-web">Développement web</Link>
+  <Link to="/services/solutions-informatiques">Solutions informatiques</Link>
+  <Link to="/services/maintenance">Maintenance</Link>
+  <Link to="/services/conseil-informatique">Conseil informatique</Link>
+</div>
 
     {/* 4 - Contact */}
     <div className="footer-column">
