@@ -389,9 +389,9 @@
     display: grid;
 
     grid-template-columns:
-        1.5fr
         1fr
-        1.2fr
+        1.1fr
+        1.5fr
         1.3fr;
 
     gap: 50px;
@@ -459,13 +459,6 @@ line-height: 0.5;
     transition: 0.3s;
 }
 
-.footer-column a:hover {
-
-    color: #a5abae;
-
-    padding-left: 5px;
-}
-
 
 /* =========================================================
    FOOTER BOTTOM
@@ -510,71 +503,41 @@ line-height: 0.5;
     transform: scale(1.1);
 }
 
-/* FACEBOOK - carré bleu */
-.social.facebook {
-    background: #1877F2;
-    font-size: 20px;
-     width: 28px; 
-    height: 28px;
-    font-family: Arial, sans-serif;
+.social.facebook, .social.twitter, .social.linkedin {
+  width: 38px !important;
+  height: 38px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
-/* X / TWITTER - agrandi */
-.social.twitter {
-    background: #000000;
-    font-size: 20px; /* agrandi */
-    font-weight: 800;
-    width: 30px; /* un peu plus grand que les autres */
-    height: 30px;
+/* FORCE BLEU - A LA FIN DU FICHIER */
+.social-links .social.facebook {
+  background: #1877f2 !important;
+  background-color: #1877f2 !important;
+  color: #fff !important;
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 50% !important;
 }
 
-/* LINKEDIN - carré */
-.social.linkedin {
-    background: #0077B5;
-    font-size: 16px;
-    border-radius: 8px;
-     width: 28px; 
-    height: 28px;
+.social-links .social.twitter {
+  background: #000 !important;
+  background-color: #000 !important;
+  color: #fff !important;
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 50% !important;
 }
 
-
-.footer-bottom {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100%;
+.social-links .social.linkedin {
+  background: #0a66c2 !important;
+  background-color: #0a66c2 !important;
+  color: #fff !important;
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 8px !important;
 }
-
-.footer-bottom p {
-    text-align: center;
-    width: 100%;
-    margin: 0 auto;
-}
-
-
-.footer-social {
-
-    display: flex;
-
-    gap: 15px;
-}
-
-.footer-social a {
-
-    color: #94a3b8;
-
-    text-decoration: none;
-
-    font-size: 13px;
-
-    transition: 0.3s;
-}
-
-/* .footer-social a:hover {
-
-    color: #505152;
-} */
 
 
 /* nos services informatiques */

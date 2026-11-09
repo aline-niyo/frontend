@@ -7,25 +7,25 @@ export default function DeveloppementWeb() {
     <div className="devweb-page">
 
       {/* HERO */}
-      <section className="devweb-hero">
-        <div className="devweb-hero-text">
-          <span className="devweb-badge">Développement Web • Bujumbura</span>
-          <h1>Nous créons des sites web qui <span>vendent</span> pour vous.</h1>
-          <p>Site vitrine, e-commerce ou application web. Rapide, beau sur Samsung et sur ordi, et facile à gérer.</p>
-          <div className="devweb-hero-btns">
-            <Link to="/devis" className="btn-primary">Demander un devis gratuit</Link>
-            <Link to="/services" className="btn-secondary">Voir tous les services</Link>
-          </div>
-          <div className="devweb-stats">
-            <div><strong>24h</strong><span>Devis gratuit</span></div>
-            <div><strong>100%</strong><span>Adapté mobile</span></div>
-            <div><strong>7j</strong><span>Livraison express</span></div>
-          </div>
-        </div>
-        <div className="devweb-hero-image">
-          <img src="/images/dev-web.png" alt="Développement web" />
-        </div>
-      </section>
+ <section className="devweb-hero">
+  <div className="devweb-hero-overlay"></div>
+  <div className="devweb-hero-text">
+    <h1>Votre site web, votre meilleur <span>commercial</span> qui ne dort jamais</h1>
+<p>Vous perdez des clients parce que vous n'êtes pas visible en ligne ? Nous créons des sites web rapides, beaux sur téléphone et pensés pour transformer vos visiteurs en clients. 
+  Site vitrine, boutique en ligne ou application sur mesure, livré en 7 jours.</p>
+    
+    <div className="devweb-stats">
+      <div><strong>24h</strong><span>Devis gratuit</span></div>
+      <div><strong>100%</strong><span>Adapté mobile</span></div>
+      <div><strong>7j</strong><span>Livraison express</span></div>
+    </div>
+
+    <div className="devweb-hero-btns">
+      <Link to="/devis" className="btn-primary">Demander un devis gratuit</Link>
+      <Link to="/services" className="btn-secondary">Voir tous les services</Link>
+    </div>
+  </div>
+</section>
 
       {/* CE QU'ON FAIT */}
       <section className="devweb-services">
@@ -33,7 +33,7 @@ export default function DeveloppementWeb() {
         <div className="devweb-grid">
           <div className="devweb-card">
             <h3>🌐 Site Vitrine</h3>
-            <p>Présentez votre entreprise, vos services, vos contacts. Idéal pour attirer des clients à Bujumbura.</p>
+            <p>Présentez votre entreprise, vos services, vos contacts. Idéal pour attirer des clients.</p>
             <p className="devweb-price">À partir de 150 000 FBU</p>
           </div>
           <div className="devweb-card">
