@@ -9,7 +9,9 @@ import Contact from "./pages/Contact";
 import Devis from "./pages/demandes_devis";
 
 import DeveloppementWeb from "./pages/DeveloppementWeb";
-import SolutionInfo from "./pages/SolutionInfo";
+import SolutionInfo from "./pages/Solution";
+
+
 
 
 
@@ -35,7 +37,7 @@ function App() {
 
                 <Route path="/services/developpement-web" element={<DeveloppementWeb />} />
 
-                <Route path="/services/solutions-informatiques" element={<SolutionInfo />} />
+                <Route path="/services/solutions-informatiques" element={<Solution />} />
 
             </Routes>
 

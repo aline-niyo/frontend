@@ -7,35 +7,30 @@
 .sol-hero-text p { color: #e2e8f0; font-size: 17px; line-height: 1.6; max-width: 620px; }
 .sol-badge { background: rgba(255,255,255,0.15); color: #fff; padding: 7px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; }
 .sol-hero-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 22px 0 5px; }
-.btn-primary { background: #2563eb; color: #fff; padding: 13px 24px; border-radius: 10px; text-decoration: none; font-weight: 700; transition: all 0.3s; }
-.btn-primary:hover { background: #1d4ed8; transform: translateY(-2px); }
+.btn-primary { background: #2563eb; color: #fff; padding: 13px 24px; border-radius: 10px; text-decoration: none; font-weight: 700; }
 .btn-secondary { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.4); color: #fff; padding: 13px 24px; border-radius: 10px; text-decoration: none; font-weight: 600; }
 .sol-stats { display: flex; gap: 12px; justify-content: center; margin-top: 28px; flex-wrap: wrap; }
 .sol-stats div { display: flex; flex-direction: column; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 12px 18px; min-width: 110px; }
 .sol-stats div strong { color: #fff; font-size: 22px; font-weight: 800; }
 .sol-stats div span { color: #cbd5e1; font-size: 13px; }
-
 .sol-label { color: #2563eb; font-size: 12px; font-weight: 800; letter-spacing: 1.5px; }
 .sol-services { padding: 55px 8%; text-align: center; }
 .sol-services h2 { font-size: 32px; color: #0f172a; line-height: 1.2; margin: 10px 0; }
 .sol-subtitle { color: #64748b; margin: 0 0 28px; font-size: 16px; }
 .sol-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; text-align: left; }
-.sol-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 22px; transition: all 0.3s; }
-.sol-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); background: #fff; }
+.sol-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 22px; }
 .sol-icon { font-size: 32px; margin-bottom: 12px; }
 .sol-card h3 { font-size: 18px; color: #0f172a; margin: 0 0 8px; }
 .sol-card p { color: #475569; font-size: 14px; line-height: 1.5; }
 .sol-card ul { list-style: none; padding: 0; margin: 14px 0; }
 .sol-card ul li { font-size: 13px; color: #334155; margin-bottom: 6px; }
-.sol-price { color: #2563eb !important; font-weight: 700 !important; margin-top: 14px !important; }
+.sol-price { color: #2563eb !important; font-weight: 700 !important; }
 .sol-link { color: #2563eb; font-weight: 700; text-decoration: none; display: inline-block; margin-top: 8px; font-size: 14px; }
-
 .sol-process { padding: 50px 8%; background: #f8fafc; text-align: center; }
 .sol-process h2 { font-size: 30px; color: #0f172a; margin: 10px 0 25px; }
 .sol-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; text-align: left; }
 .sol-steps div { background: #fff; padding: 22px; border-radius: 14px; border: 1px solid #e2e8f0; }
 .sol-steps span { background: #2563eb; color: #fff; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 800; }
-
 .sol-cta { text-align: center; padding: 55px 8%; background: #2563eb; border-radius: 16px; margin: 25px 8% 40px; color: #fff; }
 .sol-cta h2 { font-size: 30px; margin: 0 0 10px; }
 .sol-cta p { color: #e0e7ff; }
@@ -43,7 +38,6 @@
 .sol-cta-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 20px 0 10px; }
 .btn-white-outline { border: 1px solid #fff; color: #fff; padding: 13px 24px; border-radius: 10px; text-decoration: none; font-weight: 600; }
 .sol-cta-small { font-size: 13px; opacity: 0.8; }
-
 @media (max-width: 768px) {
   .sol-hero { padding: 40px 15px; min-height: 500px; }
   .sol-hero-text h1 { font-size: 29px; }
