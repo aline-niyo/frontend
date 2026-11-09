@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import "./solutionInfo.css";
 import logo from "../assets/logo.png";
 
+
 export default function SolutionInfo() {
   return (
     <div className="sol-page">
