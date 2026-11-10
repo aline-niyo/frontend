@@ -1,16 +1,16 @@
 /*HERO IMAGE A PEINE VISIBLE, TENDANT VERS NOIR */
 .devweb-hero {
   position: relative;
-  min-height: 500px;
- display: flex;
+  min-height: 450px; /* on enlève le 500px */
+  display: flex;
   align-items: center;
-  justify-content: center; /* CENTRE HORIZONTAL */
-  text-align: center; /* CENTRE LE TEXTE */
-  /* padding: 30px 8%; */
+  justify-content: center;
+  text-align: center;
+  padding: 30px 8% 5px 8%; /* 30px en haut, 30px en bas */
   background-image: url("https://images.unsplash.com/photo-1547658719-da2b51169166?w=1600&h=900&fit=crop");
   background-size: cover;
   background-position: center;
-  background-color: #000; /* fond noir derrière */
+  background-color: #000;
   overflow: hidden;
 }
 
@@ -28,6 +28,7 @@
 }
 
 .devweb-hero-text {
+  
   position: relative;
   z-index: 2;
   max-width: 650px;
@@ -37,7 +38,10 @@
   color: #fff;
   font-size: 30px;
   line-height: 1.1;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }
+
 
 /* BOUTONS HERO - PETIT ESPACE ENTRE LES 2 */
 .devweb-hero-btns {
@@ -60,6 +64,13 @@
   display: inline-block;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== BOUTON DEVIS EN BLEU ===== */
+.devweb-hero-btns .btn-primary {
+  color: #2563eb !important; /* le mot en bleu */
+  background: #fff !important; /* fond blanc */
+  border: 1px solid #0d6efd !important;
 }
 
 /* HOVER - souris dessus */
@@ -91,6 +102,8 @@
 .devweb-hero-btns a:hover {
   transform: translateY(-2px);
 }
+
+
 
 /* SUR SAMSUNG - les 2 restent sur la même ligne si possible */
 @media (max-width: 768px) {

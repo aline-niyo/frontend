@@ -713,7 +713,7 @@ useEffect(() => {
 
                                 <a
                                     href="https://x.com/i/jf/onboarding/web#/s/face_liveness/r-qm8vsl"
-                                    className="twitter"
+                                    className="social twitter"
                                 >
                                     X
                                 </a>

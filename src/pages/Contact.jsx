@@ -356,14 +356,14 @@ function Contact() {
 
                                 <a
                                     href="https://x.com/i/jf/onboarding/web#/s/face_liveness/r-qm8vsl"
-                                    className="twitter"
+                                    className="social twitter"
                                 >
                                     X
                                 </a>
 
                                 <a
                                     href="https://www.linkedin.com/checkpoint/challengesV3/AQF-gMPvquMaoQAAAaGMHbISLtsFnDyP2yUvs6zV8c3IICtgFlyIzkS4IyAADqq8pjhzkL5yh3y_xM5pR_bm-Xjo_PNROQ"
-                                    className="social linkdin"
+                                    className="social linkedin"
                                 >
                                     in
                                 </a>

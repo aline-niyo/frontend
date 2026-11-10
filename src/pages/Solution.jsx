@@ -18,7 +18,7 @@ export default function Solution() {
             <Link to="/services" className="btn-secondary">Voir tous les services</Link>
           </div>
           <div className="sol-stats">
-            <div><strong>24h</strong><span>Devis gratuit</span></div>
+            <div><strong>24h</strong><span>Devis</span></div>
             <div><strong>+50</strong><span>Organisations aidées</span></div>
             <div><strong>7j</strong><span>Mise en place</span></div>
           </div>
@@ -83,7 +83,7 @@ export default function Solution() {
         <h2>Prêt à gagner du temps ?</h2>
         <p>Parlez-nous de votre problème. On vous propose la solution digitale en moins de 24h, gratuitement.</p>
         <div className="sol-cta-btns">
-          <Link to="/devis" className="btn-primary">Demander un devis gratuit</Link>
+          <Link to="/devis" className="btn-primary">Demander un devis</Link>
           <Link to="/contact" className="btn-white-outline">Nous contacter</Link>
         </div>
         <p className="sol-cta-small">Sans engagement • Réponse en moins de 24h</p>

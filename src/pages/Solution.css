@@ -5,7 +5,7 @@
 .sol-hero-text h1 { color: #fff; font-size: 44px; line-height: 1.1; }
 .sol-hero-text h1 span { color: #38bdf8; }
 .sol-hero-text p { color: #e2e8f0; font-size: 17px; line-height: 1.6; max-width: 620px; }
-.sol-badge { background: rgba(255,255,255,0.15); color: #fff; padding: 7px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; }
+.sol-badge { background: rgba(255,255,255,0.15); color: #fff; padding: 7px 14px; border-radius: 20px; font-size: 13px; font-weight: 300; }
 .sol-hero-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 22px 0 5px; }
 .btn-primary { background: #2563eb; color: #fff; padding: 13px 24px; border-radius: 10px; text-decoration: none; font-weight: 700; }
 .btn-secondary { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.4); color: #fff; padding: 13px 24px; border-radius: 10px; text-decoration: none; font-weight: 600; }

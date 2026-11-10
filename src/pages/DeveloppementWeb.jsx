@@ -14,14 +14,14 @@ export default function DeveloppementWeb() {
 <p>Vous perdez des clients parce que vous n'êtes pas visible en ligne ? Nous créons des sites web rapides, beaux sur téléphone et pensés pour transformer vos visiteurs en clients. 
   Site vitrine, boutique en ligne ou application sur mesure, livré en 7 jours.</p>
     
-    <div className="devweb-stats">
+    {/* <div className="devweb-stats">
       <div><strong>24h</strong><span>Devis gratuit</span></div>
       <div><strong>100%</strong><span>Adapté mobile</span></div>
       <div><strong>7j</strong><span>Livraison express</span></div>
-    </div>
+    </div> */}
 
     <div className="devweb-hero-btns">
-      <Link to="/devis" className="btn-primary">Demander un devis gratuit</Link>
+      <Link to="/devis" className="btn-primary">Demander un devis</Link>
       <Link to="/services" className="btn-secondary">Voir tous les services</Link>
     </div>
   </div>
