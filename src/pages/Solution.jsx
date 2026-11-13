@@ -10,11 +10,11 @@ export default function Solution() {
       <section className="sol-hero">
         <div className="sol-hero-overlay"></div>
         <div className="sol-hero-text">
-          <span className="sol-badge">✦ Solutions Digitales • 100% Sur mesure</span>
+          {/* <span className="sol-badge">✦ Solutions Digitales • 100% Sur mesure</span> */}
           <h1>Arrêtez de perdre du temps.<br />Passez au <span>digital.</span></h1>
           <p>Papiers, Excel, WhatsApp, rendez-vous oubliés... On remplace tout ça par un seul outil simple, rapide et qui travaille pour vous, depuis votre téléphone.</p>
           <div className="sol-hero-btns">
-            <Link to="/devis" className="btn-primary">Demander un devis gratuit →</Link>
+            <Link to="/devis" className="btn-primary">Demander un devis →</Link>
             <Link to="/services" className="btn-secondary">Voir tous les services</Link>
           </div>
           <div className="sol-stats">
