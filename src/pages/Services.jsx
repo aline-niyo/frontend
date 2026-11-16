@@ -63,7 +63,7 @@ function Services() {
             </section>
 
             {/* SECTION 2 - TES SERVICES */}
-            <section className="services-section">
+            {/* <section className="services-section">
   <h2>Nos Services Informatiques</h2>
   <div className="services-grid">
     {services.length > 0 ? services.map((s) => {
@@ -80,7 +80,7 @@ function Services() {
       )
     }) : <p className="loading">Chargement...</p>}
   </div>
-</section>
+</section> */}
 
             {/* SECTION 3 - STACK TECHNOLOGIQUE */}
            <section className="happy-clients">

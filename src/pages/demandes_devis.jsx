@@ -3,34 +3,23 @@ import { Link } from 'react-router-dom';
 import logo from "../assets/logo.png";
 import "./demandes_devis.css";
 
-const defaultImages = {
-  "Développement Site Web Vitrine": "https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&h=400&fit=crop",
-  "Développement Application E-commerce": "https://images.unsplash.com/photo-1556740772-1a741367b93e?w=600&h=400&fit=crop",
-  "Développement Application Mobile": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop",
-  "Installation Réseau Entreprise": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop",
-  "Maintenance Informatique Annuelle": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop",
-  "Cybersécurité & Protection Données": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&h=400&fit=crop",
-  "Formation Informatique": "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&h=400&fit=crop",
-  "Conseil & Transformation Digitale": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
-};
 function Devis() {
-useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('in-view');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.15 });
-    document.querySelectorAll('.hero-section, .services-section, .devis-form-section, .process-section')
-        .forEach(el => observer.observe(el));
-}, []);
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.hero-section, .services-section, .devis-form-section, .process-section')
+            .forEach(el => observer.observe(el));
+    }, []);
 
-    const [services, setServices] = useState([]);
     const [formData, setFormData] = useState({
         nom: "", prenom: "", email: "", telephone: "",
-        service_id: "", description: "", urgence: "Normale",
+        serviceRecherche: "", description: "", urgence: "Normale",
         budget: "", dateSouhaitee: ""
     });
     const [success, setSuccess] = useState("");
@@ -38,25 +27,6 @@ useEffect(() => {
     const [loading, setLoading] = useState(false);
 
     const API_URL = "https://infoservices-backend-2-8fuq.onrender.com";
-
-    useEffect(() => {
-        fetch(`${API_URL}/api/services`)
-            .then((res) => {
-                if (!res.ok) throw new Error("Erreur services");
-                return res.json();
-            })
-            .then((data) => {
-                setServices(data);
-            })
-            .catch(() => {
-                setServices([
-                    { id: 1, nom: "Dépannage Informatique", description: "Réparation PC, virus, lenteur." },
-                    { id: 2, nom: "Création Site Web", description: "Site vitrine, e-commerce." },
-                    { id: 3, nom: "Réseau & Wifi", description: "Installation réseau, routeur." },
-                    { id: 4, nom: "Maintenance", description: "Contrat de maintenance." }
-                ]);
-            });
-    }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -67,17 +37,16 @@ useEffect(() => {
         e.preventDefault();
         setSuccess(""); setError(""); setLoading(true);
         try {
-            // TON BACKEND VEUT service: {id} et pas service_id
             const dataToSend = {
                 nom: formData.nom,
                 prenom: formData.prenom,
                 email: formData.email,
                 telephone: formData.telephone,
+                serviceRecherche: formData.serviceRecherche,
                 description: formData.description,
                 urgence: formData.urgence,
                 budget: formData.budget ? Number(formData.budget) : null,
                 dateSouhaitee: formData.dateSouhaitee || null,
-                service: { id: Number(formData.service_id) }
             };
 
             console.log("Envoi vers /api/devis:", dataToSend);
@@ -96,7 +65,7 @@ useEffect(() => {
             }
 
             setSuccess("Votre demande de devis a été envoyée avec succès !");
-            setFormData({ nom: "", prenom: "", email: "", telephone: "", service_id: "", description: "", urgence: "Normale", budget: "", dateSouhaitee: "" });
+            setFormData({ nom: "", prenom: "", email: "", telephone: "", serviceRecherche: "", description: "", urgence: "Normale", budget: "", dateSouhaitee: "" });
         } catch (err) {
             console.error(err);
             setError("Erreur: " + err.message);
@@ -112,62 +81,54 @@ useEffect(() => {
                 <p>Nous fournissons des solutions numériques innovantes adaptées aux objectifs de votre entreprise.</p>
                 <a href="#devis-form" className="hero-btn">Demander un devis</a>
             </section>
-<section className="services-section">
-  <div className="services-grid">
-    {services.length > 0 ? services.map((s) => {
-      const imgSrc = s.image ? `/uploads/${s.image}` : (defaultImages[s.nom] || defaultImages["Développement web"]);
-      return (
-        <div key={s.id} className="service-card">
-          <div className="card-img"><img src={imgSrc} alt={s.nom} /></div>
-          <h3>{s.nom}</h3>
-          <p>{s.description}</p>
-          <span className="prix">{Number(s.prix).toLocaleString()} FBU</span>
-        </div>
-      )
-    }) : <p className="loading">Chargement...</p>}
-  </div>
-</section>
-<section id="devis-form" className="devis-form-section">
-  <div className="devis-wrapper">
-    <div className="devis-container">
-      <h2>Demander un devis</h2>
-      {success && <div className="success-message">{success}</div>}
-      {error && <div className="error-message">{error}</div>}
-      <form onSubmit={handleSubmit}>
-        <div className="form-row">
-          <div className="form-group"><label>Nom</label><input type="text" name="nom" value={formData.nom} onChange={handleChange} required /></div>
-          <div className="form-group"><label>Prénom</label><input type="text" name="prenom" value={formData.prenom} onChange={handleChange} required /></div>
-        </div>
-        <div className="form-row">
-          <div className="form-group"><label>Email</label><input type="email" name="email" value={formData.email} onChange={handleChange} required /></div>
-          <div className="form-group"><label>Téléphone</label><input type="tel" name="telephone" value={formData.telephone} onChange={handleChange} required /></div>
-        </div>
-        <div className="form-group">
-          <label>Service recherché</label>
-          <select name="service_id" value={formData.service_id} onChange={handleChange} required>
-            <option value="">-- Sélectionnez un service --</option>
-            {services.map((service) => (<option key={service.id} value={service.id}>{service.nom}</option>))}
-          </select>
-        </div>
-        <div className="form-group"><label>Description</label><textarea name="description" value={formData.description} onChange={handleChange} rows="5" required></textarea></div>
-        <div className="form-row">
-          <div className="form-group"><label>Urgence</label><select name="urgence" value={formData.urgence} onChange={handleChange}><option>Faible</option><option>Normale</option><option>Urgente</option></select></div>
-          <div className="form-group"><label>Budget (FBU)</label><input type="number" name="budget" value={formData.budget} onChange={handleChange} placeholder="Ex: 200000" /></div>
-        </div>
-        <div className="form-group"><label>Date souhaitée</label><input type="date" name="dateSouhaitee" value={formData.dateSouhaitee} onChange={handleChange} /></div>
-        <button type="submit" className="submit-button small" disabled={loading}>{loading ? "Envoi..." : "Envoyer la demande"}</button>
-      </form>
-    </div>
-    <div className="devis-info">
-      <div className="devis-image"><img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=800&auto=format&fit=crop" alt="Devis informatique" /></div>
-      <h3>Votre projet, notre priorité</h3>
-      <p>Nous vous répondons en moins de 24h avec un devis détaillé et transparent.</p>
-      <p><strong>✓ Devis gratuit</strong><br/><strong>✓ Réponse rapide</strong><br/><strong>✓ Support local</strong> - Bujumbura</p>
-    </div>
-  </div>
-</section>
+
+            <section id="devis-form" className="devis-form-section">
+                <div className="devis-wrapper">
+                    <div className="devis-container">
+                        <h2>Demander un devis</h2>
+                        {success && <div className="success-message">{success}</div>}
+                        {error && <div className="error-message">{error}</div>}
+                        <form onSubmit={handleSubmit}>
+                            <div className="form-row">
+                                <div className="form-group"><label>Nom</label><input type="text" name="nom" value={formData.nom} onChange={handleChange} required /></div>
+                                <div className="form-group"><label>Prénom</label><input type="text" name="prenom" value={formData.prenom} onChange={handleChange} required /></div>
+                            </div>
+                            <div className="form-row">
+                                <div className="form-group"><label>Email</label><input type="email" name="email" value={formData.email} onChange={handleChange} required /></div>
+                                <div className="form-group"><label>Téléphone</label><input type="tel" name="telephone" value={formData.telephone} onChange={handleChange} required /></div>
+                            </div>
+
+                            <div className="form-group">
+                                <label htmlFor="serviceRecherche">Service recherché</label>
+                                <input
+                                    type="text"
+                                    id="serviceRecherche"
+                                    name="serviceRecherche"
+                                    placeholder="Ex : Je veux un site pour vendre mes habits..."
+                                    value={formData.serviceRecherche}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+                            <div className="form-group"><label>Description</label><textarea name="description" value={formData.description} onChange={handleChange} rows="5" required></textarea></div>
+                            <div className="form-row">
+                                <div className="form-group"><label>Urgence</label><select name="urgence" value={formData.urgence} onChange={handleChange}><option>Faible</option><option>Normale</option><option>Urgente</option></select></div>
+                                <div className="form-group"><label>Budget (FBU)</label><input type="number" name="budget" value={formData.budget} onChange={handleChange} placeholder="Ex: 200000" /></div>
+                            </div>
+                            <div className="form-group"><label>Date souhaitée</label><input type="date" name="dateSouhaitee" value={formData.dateSouhaitee} onChange={handleChange} /></div>
+                            <button type="submit" className="submit-button small" disabled={loading}>{loading ? "Envoi..." : "Envoyer la demande"}</button>
+                        </form>
+                    </div>
+                    <div className="devis-info">
+                        <div className="devis-image"><img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=800&auto=format&fit=crop" alt="Devis informatique" /></div>
+                        <h3>Votre projet, notre priorité</h3>
+                        <p>Nous vous répondons en moins de 24h avec un devis détaillé et transparent.</p>
+                        <p><strong>✓ Devis gratuit</strong><br /><strong>✓ Réponse rapide</strong><br /><strong>✓ Support local</strong> - Bujumbura</p>
+                    </div>
+                </div>
+            </section>
             <section className="section process-section"><h2>Comment ça marche ?</h2><div className="process-steps"><div className="step"><span>1</span><h3>Vous demandez</h3><p>Vous remplissez le formulaire</p></div><div className="step"><span>2</span><h3>Nous analysons</h3><p>Devis en 24h</p></div><div className="step"><span>3</span><h3>On intervient</h3><p>Service rapide et garanti</p></div></div></section>
-               <footer className="contact-footer"><div className="footer-container"><div className="footer-column footer-about"><Link to="/" className="navbar-logo"><img src={logo} alt="Logo InfoServices" /><span>InfoServices</span></Link><div className="social-links"><a href="https://www.facebook.com/profile.php?id=100081083984402&sk=reels_tab" className="social facebook">f</a><a href="https://x.com/i/jf/onboarding/web#/s/face_liveness/r-qm8vsl" className="social twitter">X</a><a href="https://www.linkedin.com/checkpoint/challengesV3/AQF-gMPvquMaoQAAAaGMHbISLtsFnDyP2yUvs6zV8c3IICtgFlyIzkS4IyAADqq8pjhzkL5yh3y_xM5pR_bm-Xjo_PNROQ" className="social linkedin">in</a></div></div><div className="footer-column"><h3>Navigation</h3><div className="footer-column"><Link to="/">Accueil</Link><Link to="/services">Services</Link><Link to="/apropos">À propos</Link><Link to="/contact">Contact</Link></div></div><div className="footer-column"><h3>Nos services</h3><a href="/services">Développement web</a><a href="/services">Solutions informatiques</a><a href="/services">Maintenance</a><a href="/services">Conseil informatique</a></div><div className="footer-column"><h3>Contact</h3><p>Bujumbura, Burundi</p><p>alineniyomwungere99@gmail.com</p><p>+257 62573421</p></div></div><div className="footer-bottom"><p>© {new Date().getFullYear()} InfoServices. Tous droits réservés.</p></div></footer>
+            <footer className="contact-footer"><div className="footer-container"><div className="footer-column footer-about"><Link to="/" className="navbar-logo"><img src={logo} alt="Logo InfoServices" /><span>InfoServices</span></Link><div className="social-links"><a href="https://www.facebook.com/profile.php?id=100081083984402&sk=reels_tab" className="social facebook">f</a><a href="https://x.com/i/jf/onboarding/web#/s/face_liveness/r-qm8vsl" className="social twitter">X</a><a href="https://www.linkedin.com/checkpoint/challengesV3/AQF-gMPvquMaoQAAAaGMHbISLtsFnDyP2yUvs6zV8c3IICtgFlyIzkS4IyAADqq8pjhzkL5yh3y_xM5pR_bm-Xjo_PNROQ" className="social linkedin">in</a></div></div><div className="footer-column"><h3>Navigation</h3><div className="footer-column"><Link to="/">Accueil</Link><Link to="/services">Services</Link><Link to="/apropos">À propos</Link><Link to="/contact">Contact</Link></div></div><div className="footer-column"><h3>Nos services</h3><a href="/services">Développement web</a><a href="/services">Solutions informatiques</a><a href="/services">Maintenance</a><a href="/services">Conseil informatique</a></div><div className="footer-column"><h3>Contact</h3><p>Bujumbura, Burundi</p><p>alineniyomwungere99@gmail.com</p><p>+257 62573421</p></div></div><div className="footer-bottom"><p>© {new Date().getFullYear()} InfoServices. Tous droits réservés.</p></div></footer>
         </div>
     );
 }
