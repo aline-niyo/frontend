@@ -263,12 +263,12 @@ function Apropos() {
                            </h3>
    
                           <div className="footer-column">
-    
-       <Link to="/">Accueil</Link>
-       <Link to="/services">Services</Link>
-       <Link to="/apropos">À propos</Link>
-       <Link to="/contact">Contact</Link>
-   </div>
+  <h3>Nos services</h3>
+  <Link to="/services/developpement-web">Développement web</Link>
+  <Link to="/services/solutions-informatiques">Solutions informatiques</Link>
+  <Link to="/services/maintenance">Maintenance</Link>
+  <Link to="/services/conseil-informatique">Conseil informatique</Link>
+</div>
    
                        </div>
    
