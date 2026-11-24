@@ -14,6 +14,7 @@ import droite from "../assets/back.webp";
 
 import logo from "../assets/logo.png"; 
 
+
 const defaultImages = {
   "Développement Site Web Vitrine": "https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&h=400&fit=crop",
   "Développement Application E-commerce": "https://images.unsplash.com/photo-1556740772-1a741367b93e?w=600&h=400&fit=crop",

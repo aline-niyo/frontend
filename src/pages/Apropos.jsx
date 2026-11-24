@@ -6,6 +6,8 @@ import equipeImg from "../assets/img.jpg";
 import philoImg from "../assets/philo.webp";
 import logo from "../assets/logo.png"; 
 
+
+
 function Apropos() {
     const [openIndex, setOpenIndex] = useState(null);
       useEffect(() => {

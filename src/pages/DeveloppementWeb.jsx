@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import "./DeveloppementWeb.css";
 import logo from "../assets/logo.png";
 
+
 export default function DeveloppementWeb() {
   return (
     <div className="devweb-page">

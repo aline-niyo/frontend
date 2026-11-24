@@ -15,8 +15,6 @@ import logoba from "../assets/apropo.jpg";
 import logo from "../assets/logo.png";
 
 
-
-
 function Accueil() {
 useEffect(() => {
   const observer = new IntersectionObserver((entries) => {

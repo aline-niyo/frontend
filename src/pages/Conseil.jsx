@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import "./Conseil.css";
 import logo from "../assets/logo.png";
 
+
 export default function Conseil() {
   return (
     <div className="sol-page">
@@ -88,45 +89,6 @@ export default function Conseil() {
         </div>
         <p className="sol-cta-small">Sans engagement • Réponse en moins de 24h</p>
       </section>
-
-      <footer className="contact-footer">
-        <div className="footer-container">
-          <div className="footer-column footer-about">
-            <Link to="/" className="navbar-logo">
-              <img src={logo} alt="Logo InfoServices" />
-              <span>InfoServices</span>
-            </Link>
-            <div className="social-links">
-              <a href="https://www.facebook.com/profile.php?id=100081083984402&sk=reels_tab" className="social facebook">f</a>
-              <a href="https://x.com/i/jf/onboarding/web#/s/face_liveness/r-qm8vsl" className="social twitter">X</a>
-              <a href="https://www.linkedin.com/" className="social linkedin">in</a>
-            </div>
-          </div>
-          <div className="footer-column">
-            <h3>Navigation</h3>
-            <Link to="/">Accueil</Link>
-            <Link to="/services">Services</Link>
-            <Link to="/apropos">À propos</Link>
-            <Link to="/contact">Contact</Link>
-          </div>
-          <div className="footer-column">
-            <h3>Nos services</h3>
-            <Link to="/services/developpement-web">Développement web</Link>
-            <Link to="/services/solutions-informatiques">Solutions informatiques</Link>
-            <Link to="/services/maintenance">Maintenance</Link>
-            <Link to="/services/conseil-informatique">Conseil informatique</Link>
-          </div>
-          <div className="footer-column">
-            <h3>Contact</h3>
-            <p>Bujumbura, Burundi</p>
-            <p>alineniyomwungere99@gmail.com</p>
-            <p>+257 62573421</p>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <p>© {new Date().getFullYear()} InfoServices. Tous droits réservés.</p>
-        </div>
-      </footer>
 
     </div>
   );

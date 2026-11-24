@@ -4,6 +4,7 @@ import logo from "../assets/logo.png";
 
 import "./Contact.css";
 
+
 function Contact() {
      useEffect(() => {
         const observer = new IntersectionObserver((entries) => {
