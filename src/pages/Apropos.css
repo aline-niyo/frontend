@@ -216,7 +216,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   max-width: 1200px;
-  margin: -40px auto 0 auto;
+  margin: 40px auto 0 auto; /* ✅ avant c'était -40px, maintenant 40px d'espace au-dessus */
   padding: 0 24px;
 }
 
